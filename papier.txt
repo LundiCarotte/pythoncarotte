@@ -1,0 +1,99 @@
+﻿TITRE-PAGE{Au bout du rouleau}
+ACTU{}
+URL-JC{https://www.facebook.com/lundicarotte/photos/a.996650900476268/1225932800881409/?type=3&theater}
+GAGNANT-JC{Emmanuelle Makunga}
+SEXE-GAGNANT{F}
+JC-OPTION{}
+DATE-RTV{29 octobre}
+RTV-OPTION{}
+QUESTION{}
+REPONSE{}
+TITRE-WEB{papier}
+DATE-ARTICLE{Le 15 octobre 2018}
+URL-IMAGE{https://lundicarotte.fr/api/admin/media/img/papier.png}
+AUTEURS{Servane Courtaux et Paul Louyot}
+PARTAGE_DESCRIPTION{L’essuie-tout, les mouchoirs et le papier toilette comme vous ne les avez jamais vu}
+#INTRODUCTION
+
+Chers lecteurs, on espère que vous avez le cœur bien accroché, car, aujourd’hui, nous abordons un sujet potentiellement traumatique. 
+
+LundiCarotte se penche sur les produits en papier à usage unique, le triptyque essuie-tout, mouchoir, papier toilette. On explore les enjeux de leur production et de leur utilisation et, pour chacun de ces volets, on vous propose des conseils pratiques pour adapter votre consommation sans pour autant subir germes et autres miasmes. 
+
+#DÉVELOPPEMENT
+
+Si l'on se penche aujourd'hui sur le monde du papier, c'est qu'il en va de l'avenir des forêts&nbsp;: pas moins de [27&nbsp;000 arbres http://www.worldwatch.org/node/6403] sont abattus chaque jour pour faire du papier toilette ! En France, malgré son utilisation un peu taboue, le marché du papier toilette représentait quasi [800&nbsp;millions d’euros http://www.slate.fr/story/108885/fesses-papier-toilette] en 2014. 
+
+Avec ses cousins l'essuie-tout et le mouchoir, ces produits sont conçus pour un usage unique. Pis, ils ne peuvent pas être recyclés en raison de leur souillure et des risques de contamination. [Et oui Jamy https://media.makeameme.org/created/et-oui-jamy.jpg], contrairement à une idée reçue, on ne jette pas les mouchoirs usagés dans la [poubelle de recyclage https://www.ecofolio.fr/recyclons-nos-papiers/le-tri-du-papier] !
+
+#CITATION{On ne jette pas les mouchoirs usagés dans la poubelle de recyclage !}
+#SOUSTITRE{Pâte à papier et biodiversité}
+
+À l'échelle mondiale, les papiers à usage unique sont fabriqués à partir de pâte à papier. Cette dernière fait l'objet d'un véritable business&nbsp;: [comme l'explique le WWF https://www.wwf.fr/champs-daction/foret/approvisionnement-responsable/papier] (Fond mondial pour la nature), «&nbsp;elle se transporte partout dans le monde et les producteurs de papier en importent de partout. Un produit “Fabriqué en France” ne garantit donc pas forcément que la pâte à papier soit française&nbsp;».
+
+Cette pâte à papier provient directement d'arbres coupés ou encore de [chutes de sciage de bois http://www.lepapier.fr/fabrication.htm] destiné à la menuiserie et la construction. 
+
+D'importants enjeux sont liés à cette industrie&nbsp;: d'abord, la forêt constitue l'habitat de bon nombre d'animaux sauvages et autres bestioles. Lorsque l'on déforeste, c'est leur maison qui part en miette. Ensuite, les arbres sont très forts pour capter le CO2 atmosphérique pendant leur croissance. Lorsque l'on abat des arbres, on se prive donc d'un "puits" de gaz à effet de serre qui nous serait bien utile !
+
+Les industries papetières sont souvent propriétaires des grandes exploitations forestières, mais il ne faut pas s’y tromper&nbsp;: là où l'on abat des forêts naturelles, on replante souvent des monocultures qui nuisent à la biodiversité. Pour citer le [Forum indonésien pour l’environnement https://wrm.org.uy/fr/les-articles-du-bulletin-wrm/section1/indonesie-derriere-une-feuille-de-papier-tout-un-cortege-de-destructions/], «&nbsp;le fait de décrire une plantation industrielle comme une forêt revient à insulter le sens même de la forêt, qui possède une unité écologique vitale pour la survie de tous les êtres vivants&nbsp;».
+
+#SOUSTITRE{Les labels à la rescousse}
+
+De nombreux labels sont mis en place à l’échelle locale et régionale pour tous types de produits. En ce qui concerne le papier, LundiCarotte vous recommande d’orienter votre choix vers des produits doublement certifiés concernant l’origine du bois, les valeurs sociales de l’entreprise et l’aspect écologique (produits chimiques, quantité d’eau utilisée pour la production...). 
+
+Les deux principaux labels concernant le bois sont FSC et PEFC. Le label FSC (Forest Stewardship Council) est le plus strict, il est attribué par différentes organisations environnementales selon dix principes clés&nbsp;: respect des lois, sécurité foncière, droits des peuples autochtones, droits des travailleurs, bénéfices pour la forêt, impact environnemental, plan d’aménagement, suivi et évaluation, maintien des forêts à haute valeur, planification et gestion des plantations. Le label PEFC est moins contraignant, il a été mis en place par les industriels forestiers en Europe afin de réguler les différentes certifications locales. Il est basé sur un engagement et non sur une vérification des pratiques. Il ne prend pas en compte l’aspect social comme le fait le FSC.
+
+#AJOUT-IMAGE{https://lundicarotte.fr/api/admin/media/img/fsc-pefc.png}
+
+#CITATION{Parmi les différents labels concernant le bois, FSC est le plus exigeant pour les entreprises forestières}
+
+La deuxième catégorie de labels écologiques comprend notamment l'Écolabel européen et NF Environnement en France. Leur but est de promouvoir la production et la consommation de produits plus écologiques que la moyenne durant tout leur cycle de vie et d'informer le consommateur sur l'impact de l'utilisation de ces produits. En ce qui concerne le papier, l'Écolabel européen est, par exemple, très axé sur la réduction de produits chimiques nocifs, notamment pour le blanchiment.
+
+#AJOUT-IMAGE{https://lundicarotte.fr/api/admin/media/img/eu-ecolabel-nf-environnement.png}
+
+On peut aussi acheter des produits en [papier recyclé https://www.consoglobe.com/recycler-papier-4311-cg]&nbsp;: «&nbsp;Selon Ecofolio, [l’éco-organisme http://www.encyclo-ecolo.com/Eco-organisme] chargé du financement de la collecte et du tri du papier, produire du papier issu du recyclage permet d’utiliser trois fois moins d’énergie, trois fois moins d’eau et jusqu’à 30&nbsp;% de CO2 de moins que produire du papier à base de bois.&nbsp;»
+
+#SOUSTITRE{Peut-on se passer d'essuie-tout ?}
+
+Passons l'éponge sur les malentendus. Parmi notre trio de papier à usage unique, c'est sûrement de l'essuie-tout qu'il est le plus facile de se passer. Une astuce simple pour perdre nos réflexes d’utilisation&nbsp;: l'éloigner des endroits d'utilisation communs, comme la table de la cuisine. Dans de nombreux cas, un coup d'éponge ou de serpillière fera l'affaire !
+
+Si vous avez tendance à renverser de la purée de carotte partout lors de vos repas, vous pouvez envisager de remplacer votre essuie-tout jetable par des serviettes en tissu. En bout de course, leur utilisation émet [moins de gaz à effet de serre https://www.treehugger.com/clean-technology/are-paper-napkins-more-environmentally-friendly.html] que celle des serviettes en papier. Si vous désirez vous acheter un petit set de table, on vous conseille d'en prendre en lin plutôt qu'en coton, ce dernier étant très gourmand en eau (comme nous le racontions lorsque nous abordions [le sujet des t-shirts https://lundicarotte.fr/tee-shirt]). Globalement, pour la cuisine, un stock de torchons dans un placard, lavés régulièrement, permettra de remédier à 90&nbsp;% de vos urgences Sopalin !
+
+#SOUSTITRE{Quid des mouchoirs en papier ?}
+
+Côté mouchoirs, il n’y a pas cinquante solutions. On peut choisir des produits jetables avec une empreinte écologique moins importante (en privilégiant les labels et le recyclage) ou s’orienter vers des solutions réutilisables comme les mouchoirs en tissu.
+
+Pour ce qui est des mouchoirs en papier recyclé, deux marques ont attiré notre attention&nbsp;: [Ecodoo http://www.ekibio.fr/groupe-bio/fr/ecodoo], assez répandue en magasins, et [Grazie Natural https://grazie.it/fr/], dont les produits sont conçus à partir de briques alimentaires.
+
+L’utilisation de mouchoirs en tissu peut paraître peu ragoûtante, mais avec une bonne organisation, [elle est envisageable https://www.cacommenceparmoi.org/mouchoirs-reutilisables]. Il existe diverses marques qui remettent les mouchoirs en tissu au goût du jour en proposant des motifs au goût du jour. On n’est cependant pas obligé de les acheter&nbsp;: avec un peu de couture, on peut [les confectionner à partir de vieux vêtements http://www.meliecoop.fr/2018/01/26/tuto-mouchoir-en-tissu/]. Il vaut mieux se constituer un stock important, afin de ne pas les garder trop longtemps en service et d’avoir toujours un mouchoir propre et sain à disposition. 
+
+Pour ce qui est de stocker les mouchoirs sales avant l'étape de la machine à laver, une astuce&nbsp;: les laisser tremper dans un bocal de vinaigre et d'huile essentielle.
+
+La rédaction de LundiCarotte, pour sa part encore traumatisée par une enfance peuplée de poches poisseuses, de rhumes sans fin et de motifs à carreaux, vous encourage cependant à tenter l’aventure ! 
+
+#SOUSTITRE{... Et même le papier toilette ?}
+
+Si vous avez survécu à notre newsletter sans violentes réactions de dégoût jusque-là, on vous présente le “family cloth”&nbsp;: le papier toilette lavable. L'idée est simple, il s'agit d'utiliser des linges propres en lieu et place du bon vieux papier toilette. Chez LundiCarotte, on trouve tout de même que c’est un changement assez brutal, étant donné l’organisation nécessaire pour être sûr d'être [dans les clous niveau hygiène http://www.atlantico.fr/decryptage/vivre-sans-papier-toilette-que-derniere-tendance-ecolo-change-au-quotidien-adeptes-stephane-gayet-969310.html].
+
+En revanche, si nous ne saurions vous conseiller de vous passer totalement de papier toilette, nous vous invitons à en diminuer les quantités (qui a besoin de 9 feuilles triple épaisseur pour s’essuyer après un petit pipi ?). Il paraîtrait que l'américain moyen utilise au moins [57 feuilles par jour http://www.southeastgreen.com/index.php/seg-features/tips-a-faqs/tips-to-green-your-life/10551-how-much-toilet-paper-is-used-per-year]&nbsp;: on vous défie de compter combien vous en utiliserez demain.
+
+Un mot sur les rouleaux censés être jetables dans la cuvette&nbsp;: il vaut mieux les mettre au recyclage, car c'est toujours ça de moins à traiter pour les stations d'épuration.
+
+#CITATION{Il vaut mieux recycler les rouleaux en carton Aquatube que les jeter dans les cuvettes}
+
+Pour économiser du papier (et surtout de l'eau), on peut aussi [faire pipi sous la douche https://www.cacommenceparmoi.org/pipi-sous-la-douche] (cliquez à vos risques et périls) !
+
+#SOUSTITRE{Les AstucesCarotte pour (s’)essuyer durable}
+
+#LISTE réfléchir à deux fois avant d’utiliser un Sopalin
+#LISTE les labels de bonne gestion des forêts&nbsp;: FSC de préférence ou encore PEFC
+#LISTE pour les papiers recyclés&nbsp;: EU Ecolabel ou Écocert
+#LISTE deux fabricants de produits en papier recyclé&nbsp;: Ecodoo ou Grazie Natural
+#LISTE sans oublier de recycler tous les autres papiers non souillés pour qu’ils deviennent un jour de belles feuilles de papier toilette !
+
+#CONCLUSION
+Pour nous raconter votre traumatisme d'enfance avec les mouchoirs en tissu&nbsp;: direction hello@lundicarotte.fr
+
+On vous souhaite une très bonne semaine&nbsp;!
+#FIN
+
+
