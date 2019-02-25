@@ -1,0 +1,26 @@
+
+Qu'est-ce qui tient dans une balise tr ?
+
+TITRE
+DATE
+INTRODUCTION
+Illustration
+...
+
+
+la première section est constituée d'un div,
+
+ensuite la partie avec les cases don etc, c'est un deuxième div.
+Plus exactement,
+  div
+    table
+      tbody
+        tr
+          td
+            div
+              table
+
+et ensuite les différentes cases sont contenues dans des
+                tr
+                  td
+                    div

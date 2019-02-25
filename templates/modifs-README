@@ -1,0 +1,6 @@
+Arguments pour une image supplémentaire :
+deuxième argument = largeur
+troisième argument = légende
+
+Option pour ajouter une image supplémentaire :
+AJOUT-IMAGE{url_image,300,Légende de l'image supplémentaire}
