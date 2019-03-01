@@ -390,15 +390,12 @@ def indice_crochet_fermeture(txt):
 
 
 
-# la fonction creer_href prend en entrée un texte et renvoie en sortie
-# le même texte où les expressions de type [phrase https://lundicarotte.fr]
-# sont remplacées par le code html d'un lien hypertexte
-
 def creer_href(txt,categorie):
+	""" la fonction creer_href prend en entrée un texte et renvoie en sortie le même texte où les expressions de type [phrase https://lundicarotte.fr] sont remplacées par le code html d'un lien hypertexte, si les crochets contiennent au moins deux chaines de caractères séparées par un espace et si la dernière chaine de caractères débute par http """
 	nb_crochet = compter_apparition(txt,"[")
 	if nb_crochet > 0:
 		# on initialise j
-		j = txt.find("[")
+		j = 0
 		#
 		for i in range(nb_crochet):
 			ind1 = txt.find("[",j)
@@ -406,43 +403,47 @@ def creer_href(txt,categorie):
 			found_close = False
 			found_open = False
 			close_ok = False
+			# on cherche un crochet de fermeture jusqu'à la fin de la ligne
 			for h in range(ind1+1,ind_n):
-				if txt[h] == '[':
-					found_open = True
 				if txt[h] == ']':
 					found_close = True
 					if not found_open:
 						ind2 = h
 						close_ok = True
-					if found_open:
-						print("Il manque un crochet dans ce texte : ",txt[ind1:h+1])
+						break
+				if txt[h] == '[':
+					found_open = True
+					# si on rencontre un crochet d'ouverture sans avoir rencontré de crochet de fermeture
+					if not found_close:
+						print("Il manque un crochet fermant ] dans ce texte : **", txt[ind1:h+1],'**')
 						j = ind1+1
-						# et retour au début de la boucle sur i
-					break
-			if not found_close:
-				# si on revient à la ligne avant de rencontrer le crochet de fermeture ], alors on ne fait rien
-				print("Il manque un crochet dans ce paragraphe : ",txt[ind1:ind_n])
+						break
+			if not close_ok and not found_open:
+				# si on revient à la ligne avant de rencontrer le crochet de fermeture ], et qu'on a pas déjà averti, alors on averti qu'il manque un crochet de fermeture
+				print("Il manque un crochet dans ce paragraphe : **",txt[ind1:ind_n],'**')
 				j = ind1+1
 
 			if close_ok:
 				seq = txt[ind1+1:ind2]
-				if (seq != "..."):
-					seq_list = seq.split()
-					http = seq_list[-1]
-					expr = " ".join(seq_list[:-1])
-					# formation de la balise
-					str1 = '<a target="_blank" href="'
-					str2 = '" style="text-decoration: none; color: #E36C0A;">'
-					str3 = '</a>'
-					# ajout éventuel du lien google analytics
-					if categorie == "mail":
-						http = lien_google + http
-						# attention, ça n'inclut pas les liens contenus dans les templates...
-					# on remplace la "pré-balise" par la balise
-					balise = str1 + http + str2 + expr + str3
-					# on renvoie la pré-balise par la balise
-					txt = txt.replace("["+seq+"]",balise)
-				j = ind2+1
+				seq_list = seq.split()
+				if (len(seq_list)>1):
+					if (len(seq_list[-1])>3):
+						if seq_list[-1][0:4] == 'http':
+							http = seq_list[-1]
+							expr = " ".join(seq_list[:-1])
+							# formation de la balise
+							str1 = '<a target="_blank" href="'
+							str2 = '" style="text-decoration: none; color: #E36C0A;">'
+							str3 = '</a>'
+							# ajout éventuel du lien google analytics
+							if categorie == "mail":
+								http = lien_google + http
+								# attention, ça n'inclut pas les liens contenus dans les templates...
+							# on remplace la "pré-balise" par la balise
+							balise = str1 + http + str2 + expr + str3
+							# on renvoie la pré-balise par la balise
+							txt = txt.replace("["+seq+"]",balise)
+			j = ind2+1
 	return(txt)
 
 def creer_json(titre_web,url_image,titre_page,description):
