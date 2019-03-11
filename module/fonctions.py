@@ -399,12 +399,15 @@ def creer_href(txt,categorie):
 		#
 		for i in range(nb_crochet):
 			ind1 = txt.find("[",j)
-			ind_n = txt.find("\n",ind1)
+			ind_fin = txt.find("\n",ind1)
+			# on gère le cas où le texte ne contient pas le retour à la ligne (par exemple s'il s'agit du texte de l'actu JeudiCarotte)
+			if ind_fin == -1:
+				ind_fin = len(txt)
 			found_close = False
 			found_open = False
 			close_ok = False
 			# on cherche un crochet de fermeture jusqu'à la fin de la ligne
-			for h in range(ind1+1,ind_n):
+			for h in range(ind1+1,ind_fin):
 				if txt[h] == ']':
 					found_close = True
 					if not found_open:
@@ -420,7 +423,7 @@ def creer_href(txt,categorie):
 						break
 			if not close_ok and not found_open:
 				# si on revient à la ligne avant de rencontrer le crochet de fermeture ], et qu'on a pas déjà averti, alors on averti qu'il manque un crochet de fermeture
-				print("Il manque un crochet dans ce paragraphe : **",txt[ind1:ind_n],'**')
+				print("Il manque un crochet dans ce paragraphe : **",txt[ind1:ind_fin],'**')
 				j = ind1+1
 
 			if close_ok:
