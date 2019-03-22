@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 # -*-coding:utf-8 -*
 
+import sys
+import os
+
+# possibly add here the location of the file
+sys.path.insert(0, '~/Downloads')
+
 from module.fonctions import *
 from module.variables import *
 from module.styles import *
 from module.classes import *
-import sys
-import os
 
 # le lien google analytics est défini dans le fichier module/variables
 
@@ -57,7 +61,6 @@ if not os.path.exists(titre_web):
 
 txt_propre = generer_fichier_txt_propre(txt,listeblocs)
 ecrire_fichier(titre_web+'/'+titre_web+'.txt',txt_propre)
-
 #print(txt_propre)
 
 ################################################################

@@ -86,7 +86,8 @@ def generer_fichier_txt_propre(donnees,listeblocs):
 	problem = False
 	quartette = [rep.intro,rep.dev,rep.outro,rep.fin]
 	for i in quartette:
-		if i not in liste_data:
+		if not any(i in k for k in liste_data):
+			print("il manque le repère ",i)
 			problem = True
 	for i in range(len(quartette)-1):
 		if donnees.find(quartette[i+1]) < donnees.find(quartette[i]):
