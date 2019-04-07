@@ -38,6 +38,7 @@ class ReperesHtml:
         self.actu = "<!--CaseActu-->"
         self.auteurs = "<!--AUTEURS-->"
         self.carotte = "<!--Carotte de conclusion-->"
+        self.contributeurs = "<!--CONTRIBUTEURS-->"
         self.courrier = "<!--CaseCourrier-->"
         self.date = "<!--DATE-->"
         self.dev = "<!--DÉVELOPPEMENT-->"
@@ -69,6 +70,7 @@ class ReperesTexte:
         # les mots-clés en MOTCLEF{} qui contiennent les infos à extraire du doc
         self.actu = "ACTU"
         self.auteurs = "AUTEURS"
+        self.contributeurs = "CONTRIBUTEURS"
         self.ajout_image = "AJOUT-IMAGE"
         self.citation = "CITATION"
         self.code = "CODE"
@@ -89,20 +91,21 @@ rep = ReperesTexte()
 
 # définition des variables "bloc" : variables qui représentent
 # les blocs qu'on veut avoir dans le html final
-logo = "logo"
-titre = "titre"
+actu = "actu"
+auteurs = "auteurs"
+courrier = "courrier"
+contributeurs = "contributeurs"
 date = "date"
+dev = "dev"
+don = "don"
 image = "image"
 intro = "intro"
-dev = "dev"
+logo = "logo"
 outro = "outro"
-auteurs = "auteurs"
 partage = "partage"
-quizz = "quizz"
-don = "don"
-actu = "actu"
-courrier = "courrier"
 pied = "pied"
+quizz = "quizz"
+titre = "titre"
 
 ####################################
 ####################################

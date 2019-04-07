@@ -14,7 +14,7 @@ import subprocess
 
 
 def bloc2rep(listeblocs):
-	""" On crée la liste des repères qui doivent être présents, étant donné la liste de blocs que l'on a spécifié """
+	""" On crée la liste des repères qui doivent être présents, étant donné la liste de blocs que l'on attend d'avoir pour un fichier html donné"""
 
 
 	listerep = []
@@ -57,8 +57,11 @@ def generer_fichier_txt_propre(donnees,listeblocs):
 
 	listerep = bloc2rep(listeblocs)
 
+	# on ajoute les repères d'importance secondaire
+	listerep.append(rep.contributeurs)
 
-	# on convertit le texte en liste et on trouve les repères
+
+	# on convertit le texte en liste et on trouve les balises
 	liste_data = donnees.split('\n')
 	liste_balises = ''
 	for k in liste_data:
@@ -81,6 +84,7 @@ def generer_fichier_txt_propre(donnees,listeblocs):
 					balise = repere+'{'+x+'}'+'\n'
 					liste_balises += balise
 	txt = liste_balises
+	debug(txt)
 
     # on check que les repères délimitant l'article sont dans le bon ordre
 	problem = False

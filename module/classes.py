@@ -24,7 +24,7 @@ class Article:
         self.ecrire_html()
 
     def afficher_balises_manquantes(self):
-        """ rendu ici, on sait que toutes les balises présentes on leurs deux crochets """
+        """ rendu ici, on sait que toutes les balises présentes ont leurs deux crochets """
 
         listerep = bloc2rep(self.listeblocs)
 
@@ -75,6 +75,7 @@ class Article:
             if i == pied:
                 self.ajouter_pied()
 
+        self.ajouter_contributeurs()
         self.ajouter_spacer()
 
 
@@ -150,6 +151,14 @@ class Article:
             data = valeurpardefaut(data,"L'éternel Georges Brassens")
             bloc = tag.auteurs_entree+data+tag.auteurs_sortie
             self.remplacer_html(reph.auteurs,bloc)
+
+    def ajouter_contributeurs(self):
+        if self.txt.find(rep.contributeurs) != -1:
+            data = extrairecurly(self.txt,rep.contributeurs)
+            data = enlever_espaces_inutiles(data)
+            if data != "":
+                bloc = tag.contributeurs_entree+data+tag.contributeurs_sortie
+                self.remplacer_html(reph.contributeurs,bloc)
 
     def ajouter_partage(self):
         url = generer_url(self.titre_web,self.categorie)
@@ -244,7 +253,6 @@ class Article:
 
     def ajouter_spacer(self):
         self.remplacer_html(reph.spacer,tag.spacer)
-
 
     def generer_nom_html(self):
         if self.categorie == "web":

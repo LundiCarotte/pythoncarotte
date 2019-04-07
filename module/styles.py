@@ -201,17 +201,38 @@ class Tag:
         self.auteurs_entree = """
         <tr>
           <td
-             align="left" style="font-size:0px;padding:10px 25px;padding-top:20px;padding-bottom:0px;word-break:break-word;"
+             align="left" style="font-size:0px;padding:10px 25px;padding-top:10px;padding-bottom:0px;word-break:break-word;"
           >
 
         <div
         style="font-family:Libre Baskerville, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;color:#000000;"
         >
         <p style="font-size: 18px; font-family: Libre Baskerville, Helvetica, Arial, sans-serif; color: #000000; line-height: 23px; text-align: right; margin: 10px 0;">
-        <span style="font-family:Arial,sans-serif"> —
+        <span style="font-family:Arial,sans-serif">
         """
 
         self.auteurs_sortie = """
+        </span></p>
+        </div>
+
+          </td>
+        </tr>
+        """
+
+        self.contributeurs_entree = """
+        <tr>
+          <td
+             align="left" style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word;"
+          >
+
+        <div
+        style="font-family:Libre Baskerville, Helvetica, Arial, sans-serif;font-size:13px;line-height:22px;text-align:left;color:#000000;"
+        >
+        <p style="font-size: 18px; font-family: Libre Baskerville, Helvetica, Arial, sans-serif; color: #000000; line-height: 23px; text-align: right; margin: 10px 0;">
+        <span style="font-family:Arial,sans-serif">
+        """
+
+        self.contributeurs_sortie = """
         </span></p>
         </div>
 
@@ -223,7 +244,7 @@ class Tag:
 
                           <!-- Début liens de partage -->
                           <tr>
-                                        <td style="word-wrap:break-word;font-size:0px" align="center">
+                                        <td style="word-wrap:break-word;font-size:0px;padding-top:40px" align="center">
                                           <table style="border-collapse:separate;" align="center" >
                                             <tbody>
                                               <tr>
