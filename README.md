@@ -110,7 +110,7 @@ Du texte contenu dans une balise `CODE{}` ne sera pas modifié et sera inséré 
 l'option "artsup" génèrera un fichier HTML conçu pour être uploadé sur le site dans la catégorie "article"
 
 exemple :
-`python3 txtenhtml.py interview2.txt artsup`
+`python3 main.py interview2.txt artsup`
 
 
 
@@ -122,4 +122,4 @@ Il s'agit plus précisément de mails courts qui ne sont pas associés à un art
 (tels que ceux envoyés pendant les vacances d'été 2018)
 
 exemple :
-`python3 txtenhtml.py 28juillet.txt minimail`
+`python3 main.py 28juillet.txt minimail`
