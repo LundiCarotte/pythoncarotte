@@ -1,10 +1,10 @@
-Le programme main.py produit un fichier html à partir d'un fichier texte.
+Le programme main.py produit un fichier HTML à partir d'un fichier texte.
 
 Ce programme est capable de générer plusieurs fichiers :
 
 - un fichier texte qui ne contient que les informations nécessaires à la génération des fichiers listés ci-dessous,
-- un fichier html qui constituera le corps du mail envoyé aux abonnés,
-- un fichier html destiné à être uploadé sur le site internet de LundiCarotte,
+- un fichier HTML qui constituera le corps du mail envoyé aux abonnés,
+- un fichier HTML destiné à être uploadé sur le site internet de LundiCarotte,
 - un fichier .json destiné à être uploadé dans la partie "Social Media" de la base de donnée du site internet de LundiCarotte, et qui permet d'améliorer l'affichage des posts sur Facebook.
 
 Le programme prend comme argument le nom d'un fichier texte.
@@ -12,7 +12,7 @@ Le programme prend comme argument le nom d'un fichier texte.
 exemple de ce que l'on entrerait dans le terminal :
 `python3 main.py biocarburant.txt`
 
-Le fichier texte doit contenir les balises nécessaires à l'obtention des sections souhaitées dans les fichiers html.
+Le fichier texte doit contenir les balises nécessaires à l'obtention des sections souhaitées dans les fichiers HTML.
 
 Une balise est définie par un repère suivi de crochets.
 Exemple : `SOUS-TITRE{}`
@@ -64,7 +64,7 @@ Mis à part les balises, le texte présent avant le repère `INTRODUCTION` et ap
 
 On peut ajouter plusieurs `AUTEURS{}`, qui ajoutent des lignes supplémentaires dans le bloc de signature.
 
-Si les balises concernant l'actu, le jeudicarotte ou les questions des lecteurs sont laissées vides, les sections correspondantes n'apparaîtront pas dans le fichier html.
+Si les balises concernant l'actu, le jeudicarotte ou les questions des lecteurs sont laissées vides, les sections correspondantes n'apparaîtront pas dans le fichier HTML.
 
 
 # Options supplémentaire
@@ -100,14 +100,14 @@ Lorsqu'une balise de type `AJOUT-IMAGE`,`SOUS-TITRE` ou `CITATION` est présente
 
 Les lignes débutant par `//` sont ignorées.
 
-Du texte contenu dans une balise `CODE{}` ne sera pas modifié et sera inséré tel quel dans le fichier html (par exemple pour insérer des tableaux dont le code html a été généré indépendamment).
+Du texte contenu dans une balise `CODE{}` ne sera pas modifié et sera inséré tel quel dans le fichier HTML (par exemple pour insérer des tableaux dont le code HTML a été généré indépendamment).
 
 
 
 
-## Génerer un fichier html pour la catégorie /articles de la base de donnée
+## Génerer un fichier HTML pour la catégorie /articles de la base de donnée
 
-l'option "artsup" génèrera un fichier html conçu pour être uploadé sur le site dans la catégorie "article"
+l'option "artsup" génèrera un fichier HTML conçu pour être uploadé sur le site dans la catégorie "article"
 
 exemple :
 `python3 txtenhtml.py interview2.txt artsup`
@@ -117,7 +117,7 @@ exemple :
 
 ## Génerer un mail très court
 
-L'option "minimail" génèrera un fichier html conçu pour être envoyé aux abonnés.
+L'option "minimail" génèrera un fichier HTML conçu pour être envoyé aux abonnés.
 Il s'agit plus précisément de mails courts qui ne sont pas associés à un article publié sur le site de LundiCarotte
 (tels que ceux envoyés pendant les vacances d'été 2018)
 
