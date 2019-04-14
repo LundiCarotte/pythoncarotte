@@ -10,22 +10,23 @@ Ce programme est capable de générer plusieurs fichiers :
 Le programme prend comme argument le nom d'un fichier texte.
 
 exemple de ce que l'on entrerait dans le terminal :
-python3 main.py biocarburant.txt
+`python3 main.py biocarburant.txt`
 
 Le fichier texte doit contenir les balises nécessaires à l'obtention des sections souhaitées dans les fichiers html.
 
 Une balise est définie par un repère suivi de crochets.
-Exemple : SOUS-TITRE{}
-Une balise est nécessairement seule sur sa ligne, et ne doit pas contenir de crochets (exception faite pour la balise CODE{})
+Exemple : `SOUS-TITRE{}`
+Une balise est nécessairement seule sur sa ligne, et ne doit pas contenir de crochets (exception faite pour la balise `CODE{}`)
 
 
 Le fichier texte devrait toujours contenir la balise suivante :
-TITRE-WEB{titre-web}
+`TITRE-WEB{titre-web}`
 
 ***Pour générer un article publié sur le site :
 
 Balises requises :
 
+```
 TITRE-PAGE{Titre de l'article}
 DATE-ARTICLE{Le 7 janvier 2018}
 URL-IMAGE{https://lundicarotte.fr/api/admin/media/img/biocarburant.png}
@@ -36,31 +37,34 @@ INTRODUCTION
 DÉVELOPPEMENT
 CONCLUSION
 FIN
-
+```
 Balises optionnelles :
 
+```
 ACTU{} (une actualité de LundiCarotte)
 QUESTION{} (question d'un lecteur)
 REPONSE{} (réponse de la rédaction)
+```
 
 ***Pour générer un mail aux abonnés :
 
 Balises requises :
 
+```
 TITRE-PAGE{Titre de l'article}
 DATE-ARTICLE{Le 7 janvier 2018}
 URL-IMAGE{https://lundicarotte.fr/api/admin/media/img/biocarburant.png}
 AUTEURS{Georges Brassens}
 PARTAGE_DESCRIPTION{Courte description de l'article pour les réseaux sociaux}
 JEUDICAROTTE{Gagnant,(M ou F),url_du_jeudicarotte,texte optionnel}
-
+```
 
 Remarques sur ces balises :
-Si l'on insère dans le fichier texte la balise TITRE-WEB{titre-web}, l'url de l'article (telle qu'indiquée dans les liens de partage) sera https://lundicarotte.fr/titre-web
+Si l'on insère dans le fichier texte la balise `TITRE-WEB{titre-web}`, l'url de l'article (telle qu'indiquée dans les liens de partage) sera https://lundicarotte.fr/titre-web
 
-Mis à part les balises, le texte présent avant le repère INTRODUCTION et après le repère FIN est ignoré.
+Mis à part les balises, le texte présent avant le repère `INTRODUCTION` et après le repère `FIN` est ignoré.
 
-On peut ajouter plusieurs AUTEURS{}, qui ajoutent des lignes supplémentaires dans le bloc de signature.
+On peut ajouter plusieurs `AUTEURS{}`, qui ajoutent des lignes supplémentaires dans le bloc de signature.
 
 Si les balises concernant l'actu, le jeudicarotte ou les questions des lecteurs sont laissées vides, les sections correspondantes n'apparaîtront pas dans le fichier html.
 
@@ -74,7 +78,7 @@ Options d'édition du texte
 On peut ajouter des liens hyperref.
 Exemple : LundiCarotte est [une infolettre incroyable https://lundicarotte.fr]
 
-On peut ajouter des bullet points avec le repère 'LISTE'.
+On peut ajouter des bullet points avec le repère `LISTE`.
 
 On peut ajouter des sous-titres, citations, images, légendes avec les balises suivantes :
 SOUS-TITRE{}
