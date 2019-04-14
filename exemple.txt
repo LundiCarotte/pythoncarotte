@@ -1,0 +1,34 @@
+TITRE-WEB{exemple}
+TITRE-PAGE{Exemple titre}
+DATE-ARTICLE{Le 18 mars 2019}
+URL-IMAGE{https://lundicarotte.fr/api/admin/media/img/peche.png}
+AUTEURS{Exemple auteurs}
+AUTEURS{George Brassens}
+PARTAGE_DESCRIPTION{Pêche ou aquaculture, d’où vient le poisson dans notre assiette ?}
+ACTU{}
+JEUDICAROTTE{Le gagnant, M,https://www.facebook.com/lundicarotte/photos/a.996650900476268/1328052434002778/?type=3&theater}
+RETROUVAILLES{}
+QUESTION{}
+REPONSE{}
+
+
+INTRODUCTION
+
+Intro
+
+DÉVELOPPEMENT
+
+SOUS-TITRE{Il est frais, mon poisson !}
+
+Ça se bouscule au rayon poissonnerie ! Les Français achetaient en 2016 en moyenne 34 kg de produits de la mer par an, qui se répartissaient en 23 kg de poisson et 11 kg de fruits de mer <sup>[1]</sup>, ce qui nous place au 5e rang européen des consommateurs de produits de la mer. Les poissons du littoral français, qui font vivre 16 000 marins pêcheurs, ne suffisent pas à notre appétit gargantuesque : pas moins de 70 % de ces 34 kg sont importés. Pour rappel, notre consommation de [viande https://lundicarotte.fr/viande] avoisine les 49 kg par personne et par an.
+
+
+
+
+CONCLUSION
+
+Conclusion
+
+
+
+FIN
