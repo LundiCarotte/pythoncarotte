@@ -8,6 +8,11 @@ from .fonctions import *
 #################################################
 
 def txtenhtml(inputString):
+	data = getData(inputString)
+	makeFiles(data, inputString)
+
+def getData(inputString):
+	"""Renvoie un objet de la classe Article"""
 
 	if not inputString: # if void input string
 		return None
@@ -23,7 +28,7 @@ def txtenhtml(inputString):
 		return None
 
 	# on récupère les données textes
-	with open(fileName,"r") as f:
+	with open(fileName, "r") as f:
 		txt = f.read()
 
 	# on définit le titre web du document
@@ -46,18 +51,15 @@ def txtenhtml(inputString):
 	txt_propre = creerFichierTextePropre(txt,listeblocs)
 	ecrire_fichier(titre_web+'/'+titre_web+'.txt',txt_propre)
 
-	# ajouter ici fonction qui vérifie si les repères sont non vides ?
+	data = Article(txt_propre,'','',[])
 
-	################################################################
-	#
+	return(data)
+
+def makeFiles(data, inputString):
+
 	############ QUEL TYPE DE FICHIER VEUT-ON ? ############
-	#
-	################################################################
 
-
-	################################
 	# CHOIX N 1
-	################################
 	#
 	# si on veut un hebdomadaire
 	#
