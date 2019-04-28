@@ -20,6 +20,6 @@ x = data.txt
 y = """
 nsasuttuieenrrsatsuie nrrstau ienrsat ue
 
-SOUS-TITRE{wesh morray}
+SOUS-TITRE{}
 nrsatuie anuriste nrrau einrsat iu
 """
