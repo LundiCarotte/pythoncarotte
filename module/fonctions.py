@@ -66,6 +66,14 @@ def charsAround(i,txt):
 	stop = (len(txt),i+20)[i+20<len(txt)]
 	return(txt[start:stop])
 
+def charsAroundString(myString,txt):
+	i = txt.find(myString)
+	j = i + len(myString)
+	k = len(txt)
+	start = (0, i-20)[i-20 >= 0]
+	stop = (k, j+20)[j+20 < k]
+	return(txt[start:stop])
+
 def warnSingleBracket(txt):
 	# on récupère la liste des box brackets
 	listeBB = creerListeBoxBrackets(txt)
@@ -318,20 +326,29 @@ def clean_data(data):
 	texte = '\n'.join(liste)
 	return(texte)
 
-def enlever_premiers_espaces(str):
-	"""enlève les espaces avant du texte, et renvoie '' si str est uniquement constitué d'espaces"""
-	if str != '':
-		while(str[0] == ' '):
-			str = str[1:]
-	return(str)
+def enlever_premiers_espaces(text):
+	"""enlève les espaces avant du texte, et renvoie '' si text est uniquement constitué d'espaces"""
+	if text != '':
+		while(text[0] == ' '):
+			text = text[1:]
+	return(text)
 
-def enlever_espaces_inutiles(str):
+def enlever_espaces_inutiles(text):
 	"""enlève les espaces au début et à la fin d'une chaîne de caractères"""
-	while(str != '' and str[0] == ' '):
-		str = str[1:]
-	while(str != '' and str[-1] == ' '):
-		str = str[:-1]
-	return(str)
+	while(text != '' and text[0] == ' '):
+		text = text[1:]
+	while(text != '' and text[-1] == ' '):
+		text = text[:-1]
+	return(text)
+
+def enleverPrePostBackspace(text):
+	"""enlève les retours à la ligne au début et à la fin d'une chaîne de caractères"""
+	while(text != '' and text[0] == '\n'):
+		text = text[1:]
+	while(text != '' and text[-1] == '\n'):
+		text = text[:-1]
+	return(text)
+
 
 def recup_data_jeudicarotte(txt,rep):
 	data = ['','','']
@@ -404,7 +421,8 @@ def mise_en_forme(txt,titre_web,categorie):
 		reperes_code.append('*** repère code '+str(i)+' ***')
 		txt = txt.replace(chaine,reperes_code[i])
 
-
+	# on enlève les espaces avant et après le texte
+	txt = enleverPrePostBackspace(txt)
 	# un retour à la ligne dans le texte correspond à un retour à la ligne dans le html
 	txt = txt.replace("\n","\n<br/>\n")
 
@@ -520,10 +538,11 @@ def ajouter_sous_titre(txt):
 				if data == '':
 					print("Une balise de sous-titre est vide")
 					data = '~'
-				# on enlève un retour à la ligne après la balise de sous-titre
-				for i in range(1):
-					if txt.find(line+'\n')!= -1:
-						line += '\n'
+				# on enlève les retours à la ligne avant et après la ligne de sous-titre
+				while txt.find('<br/>\n'+line) != -1:
+					line = '<br/>\n' + line
+				while txt.find(line+'\n<br/>') != -1:
+					line = line + '\n<br/>'
 				# on remplace la ligne entière par le bloc de citation.
 				bloc = tag.texte_sortie+tag.sous_titre_entree+data+tag.sous_titre_sortie+tag.texte_entree
 				txt = txt.replace(line,bloc)

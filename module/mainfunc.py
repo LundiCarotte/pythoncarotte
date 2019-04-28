@@ -8,11 +8,11 @@ from .fonctions import *
 #################################################
 
 def txtenhtml(inputString):
-	data = getData(inputString)
-	makeFiles(data, inputString)
+	(data, dataInputString) = getData(inputString)
+	makeFiles(data, dataInputString)
 
 def getData(inputString):
-	"""Renvoie un objet de la classe Article"""
+	"""Reçoit en argument le nom du fichier texte contenant les informations de l'article. Renvoie un objet de la classe Article."""
 
 	if not inputString: # if void input string
 		return None
@@ -51,11 +51,11 @@ def getData(inputString):
 	txt_propre = creerFichierTextePropre(txt,listeblocs)
 	ecrire_fichier(titre_web+'/'+titre_web+'.txt',txt_propre)
 
-	data = Article(txt_propre,'','',[])
+	data = Article(txt_propre,'',titre_web,[])
 
-	return(data)
+	return(data, dataInputString)
 
-def makeFiles(data, inputString):
+def makeFiles(data, dataInputString):
 
 	############ QUEL TYPE DE FICHIER VEUT-ON ? ############
 
@@ -72,7 +72,7 @@ def makeFiles(data, inputString):
 		#
 		# on crée une instance de la classe Article, de catégorie "mail"
 		listeblocs = creerListeBlocs(mail)
-		article = Article(txt_propre,"mail",titre_web,listeblocs)
+		article = Article(data.txt,"mail",data.titre_web,listeblocs)
 		article.generer_html()
 
 		############ CRÉATION FICHIER WEB ############
@@ -81,7 +81,7 @@ def makeFiles(data, inputString):
 		#
 		# on crée une instance de la classe Article, catégorie "web"
 		listeblocs = creerListeBlocs(web)
-		article = Article(txt_propre,"web",titre_web,listeblocs)
+		article = Article(data.txt,"web",data.titre_web,listeblocs)
 		article.generer_html()
 
 		# also json
@@ -97,13 +97,13 @@ def makeFiles(data, inputString):
 		# si on veut un fichier html pour la catégorie lundicarotte.fr/articles/ :
 		if dataInputString[1] == "artsup":
 			# faire l'article sup en chargeant le bon template
-			article = Article(txt_propre,"artsup",titre_web,listeblocs_artsup)
+			article = Article(data.txt,"artsup",data.titre_web,listeblocs_artsup)
 			article.generer_html()
 
 		# si on veut un minimail de type "les vacances de lundicarotte" :
 		elif dataInputString[1] == "minimail":
 			listeblocs = [logo,titre,date,intro,dev,outro,auteurs,partage,don,pied]
-			article = Article(txt_propre,"mail",titre_web,listeblocs)
+			article = Article(data.txt,"mail",data.titre_web,listeblocs)
 			article.generer_html()
 		else:
 			print("argument invalide")
