@@ -548,7 +548,6 @@ def ajouter_sous_titre(txt):
 					print("Une balise de sous-titre est vide")
 					data = '~'
 				# on enlève les retours à la ligne avant et après la ligne de sous-titre
-
 				if txt.find('\n'+line) != -1:
 					line = '\n' + line
 				pre = '\n<br/>'
