@@ -1,6 +1,5 @@
 Le programme main.py produit un fichier HTML à partir d'un fichier texte.
 
-
 Ce programme est capable de générer plusieurs fichiers :
 
 - un fichier texte qui ne contient que les informations nécessaires à la génération des fichiers listés ci-dessous,
