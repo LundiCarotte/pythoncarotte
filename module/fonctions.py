@@ -74,6 +74,15 @@ def charsAroundString(myString,txt):
 	stop = (k, j+20)[j+20 < k]
 	return(txt[start:stop])
 
+def charsBeforeAfter(myString,txt):
+	i = txt.find(myString)
+	j = i + len(myString)
+	k = len(txt)
+	start = (0, i-20)[i-20 >= 0]
+	stop = (k, j+20)[j+20 < k]
+	return('\n'+txt[start:i]+'\n*****\n'+txt[j+1:stop]+'\n')
+
+
 def warnSingleBracket(txt):
 	# on récupère la liste des box brackets
 	listeBB = creerListeBoxBrackets(txt)
@@ -424,7 +433,7 @@ def mise_en_forme(txt,titre_web,categorie):
 	# on enlève les espaces avant et après le texte
 	txt = enleverPrePostBackspace(txt)
 	# un retour à la ligne dans le texte correspond à un retour à la ligne dans le html
-	txt = txt.replace("\n","\n<br/>\n")
+	txt = txt.replace("\n","<br/>\n")
 
 	# on remplace aussi les "CO2" par "CO<sub>2</sub>"
 	txt = txt.replace("CO2","CO<sub>2</sub>")
@@ -539,10 +548,15 @@ def ajouter_sous_titre(txt):
 					print("Une balise de sous-titre est vide")
 					data = '~'
 				# on enlève les retours à la ligne avant et après la ligne de sous-titre
-				while txt.find('<br/>\n'+line) != -1:
-					line = '<br/>\n' + line
-				while txt.find(line+'\n<br/>') != -1:
-					line = line + '\n<br/>'
+
+				if txt.find('\n'+line) != -1:
+					line = '\n' + line
+				pre = '\n<br/>'
+				while txt.find(pre+line) != -1:
+					line = pre + line
+				post = '<br/>\n'
+				while txt.find(line+post) != -1:
+					line = line + post
 				# on remplace la ligne entière par le bloc de citation.
 				bloc = tag.texte_sortie+tag.sous_titre_entree+data+tag.sous_titre_sortie+tag.texte_entree
 				txt = txt.replace(line,bloc)

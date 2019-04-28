@@ -118,25 +118,17 @@ class Tag:
 
 
         self.sous_titre_entree =  """
-
         <!--début sous-titre-->
-
         <tr>
-          <td
-          align="left" style="font-size:0px;padding:10px 5px;padding-top:0px;padding-bottom:0px;word-break:break-word;"
-          >
-
+          <td align="left" style="font-size:0px;padding:10px 5px;word-break:break-word;">
           <h3 style="font-size: 18px; font-weight: bold; font-family: Libre Baskerville, Helvetica, Arial, sans-serif; color: #000000; text-align: center;">
           """
 
         self.sous_titre_sortie = """
-
               </h3>
-
             </td>
             </tr>
             <!--fin sous-titre-->
-
             """
 
         self.citation = """

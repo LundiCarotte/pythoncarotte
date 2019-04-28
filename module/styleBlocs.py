@@ -84,7 +84,7 @@ def creerBloc(i):
         x.codeAvant = """
                 <tr>
                   <td
-                     align="left" style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word;"
+                     align="left" style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:20px;word-break:break-word;"
                   >
 
                 <div
