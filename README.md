@@ -1,3 +1,13 @@
+* [Pour générer un article publié sur le site :](#pour-g-n-rer-un-article-publi--sur-le-site--)
+* [Balises optionnelles :](#balises-optionnelles--)
+- [Pour générer un mail aux abonnés :](#pour-g-n-rer-un-mail-aux-abonn-s--)
+* [Remarques sur ces balises :](#remarques-sur-ces-balises--)
+- [Options supplémentaire](#options-suppl-mentaire)
+* [Options d'édition du texte](#options-d--dition-du-texte)
+* [Génerer un fichier HTML pour la catégorie /articles de la base de donnée](#g-nerer-un-fichier-html-pour-la-cat-gorie--articles-de-la-base-de-donn-e)
+* [Génerer un mail très court](#g-nerer-un-mail-tr-s-court)
+- [Pour modifier ajouter des fonctionnalités au programme :](#pour-modifier-ajouter-des-fonctionnalit-s-au-programme--)
+
 Le programme main.py produit un fichier HTML à partir d'un fichier texte.
 
 Ce programme est capable de générer plusieurs fichiers :
@@ -22,7 +32,7 @@ Une balise est nécessairement seule sur sa ligne, et ne doit pas contenir de cr
 Le fichier texte devrait toujours contenir la balise suivante :
 `TITRE-WEB{titre-web}`
 
-# Pour générer un article publié sur le site :
+## Pour générer un article publié sur le site :
 
 Balises requises :
 
@@ -38,7 +48,8 @@ DÉVELOPPEMENT
 CONCLUSION
 FIN
 ```
-Balises optionnelles :
+
+## Balises optionnelles :
 
 `ACTU{}` (une actualité de LundiCarotte)
 
