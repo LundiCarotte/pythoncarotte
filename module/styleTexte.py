@@ -11,7 +11,7 @@ class Tag:
 
         <tr>
           <td
-             align="left" style="font-size:0px;padding:10px 25px;padding-top:0px;padding-bottom:0px;word-break:break-word;"
+             align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;"
           >
 
             <div
@@ -120,7 +120,8 @@ class Tag:
         self.sous_titre_entree =  """
         <!--début sous-titre-->
         <tr>
-          <td align="left" style="font-size:0px;padding:10px 5px;word-break:break-word;">
+          <td align="left" style="font-size:0px;padding:40px 5px 10px;word-break:break-word;">
+
           <h3 style="font-size: 18px; font-weight: bold; font-family: Libre Baskerville, Helvetica, Arial, sans-serif; color: #000000; text-align: center;">
           """
 
