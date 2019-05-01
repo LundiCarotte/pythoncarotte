@@ -77,7 +77,7 @@ Si les balises concernant l'actu, le jeudicarotte ou les questions des lecteurs 
 ## Options d'édition du texte
 
 On peut ajouter des liens hyperref.
-Exemple : LundiCarotte est [une infolettre incroyable https://lundicarotte.fr]
+Exemple : `LundiCarotte est [une infolettre incroyable https://lundicarotte.fr]`
 
 On peut ajouter des bullet points avec le repère `LISTE`.
 
