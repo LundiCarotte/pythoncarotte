@@ -41,8 +41,11 @@ FIN
 Balises optionnelles :
 
 `ACTU{}` (une actualité de LundiCarotte)
+
 `QUIZZ{}` (le quizz sera ajouté au fichier si la balise contient `oui`)
+
 `QUESTION{}` (question d'un lecteur)
+
 `REPONSE{}` (réponse de la rédaction)
 
 # Pour générer un mail aux abonnés :
