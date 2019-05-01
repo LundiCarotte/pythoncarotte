@@ -540,6 +540,7 @@ def creerBloc(i):
     if i == quizz:
         x.a = False
         x.nom = i
+        x.repereTexte = "QUIZZ"
         x.repereHtml = "<!--CaseQuizz-->"
         x.code = """
 

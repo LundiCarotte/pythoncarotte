@@ -12,7 +12,7 @@ def txtenhtml(inputString):
 	makeFiles(data, dataInputString)
 
 def getData(inputString):
-	"""Reçoit en argument le nom du fichier texte contenant les informations de l'article. Renvoie un objet de la classe Article."""
+	"""Reçoit en argument le nom du fichier texte contenant les informations de l'article. Renvoie un objet de la classe Article, dont l'attribut texte contient les informations de l'article."""
 
 	if not inputString: # if void input string
 		return None
@@ -88,9 +88,7 @@ def makeFiles(data, dataInputString):
 		article.generer_json()
 
 
-	################################
 	# CHOIX N 2
-	################################
 
 	if (len(dataInputString) == 2):
 

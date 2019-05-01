@@ -41,6 +41,7 @@ FIN
 Balises optionnelles :
 
 `ACTU{}` (une actualité de LundiCarotte)
+`QUIZZ{}` (le quizz sera ajouté au fichier si la balise contient `oui`)
 `QUESTION{}` (question d'un lecteur)
 `REPONSE{}` (réponse de la rédaction)
 
@@ -114,7 +115,6 @@ exemple :
 
 
 
-
 ## Génerer un mail très court
 
 L'option "minimail" génèrera un fichier HTML conçu pour être envoyé aux abonnés.
@@ -123,3 +123,9 @@ Il s'agit plus précisément de mails courts qui ne sont pas associés à un art
 
 exemple :
 `python3 main.py 28juillet.txt minimail`
+
+
+# Pour modifier ajouter des fonctionnalités au programme :
+
+- modifier les attributs du bloc correspondant dans le fichier module/styleBlocs.py
+- éventuellement modifier la fonction creerContenu dans le fichier module/fonctions.py

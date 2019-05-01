@@ -99,7 +99,7 @@ def warnSingleBracket(txt):
 # CRÉATION DU CONTENU DE L'ARTICLE
 #################################################
 
-def creerContenu(article,bloc):
+def creerContenu(article, bloc):
 	""" Retourne le contenu (HTML) d'un bloc du html"""
 
 	contenu = ""
@@ -201,13 +201,16 @@ def creerContenu(article,bloc):
 		contenu += bloc.case_courrier_sortie
 
 	elif nom == quizz:
-		if article.repereExiste(repere_titre_web):
-		    data = extrairecurly(article.txt,repere_titre_web)
-		    data = enlever_espaces(data)
-		    if data != '':
-		        url = "https://lundicarotte.fr/quizz/"+data
-		        contenu = bloc.code
-		        contenu = contenu.replace("url_quizz",url)
+		if article.repereExiste(repere_titre_web) and article.repereExiste(bloc.repereTexte):
+			status = extrairecurly(article.txt, bloc.repereTexte)
+			status = oui_non_to_bool(status)
+			if status:
+			    data = extrairecurly(article.txt,repere_titre_web)
+			    data = enlever_espaces(data)
+			    if data != '':
+			        url = "https://lundicarotte.fr/quizz/"+data
+			        contenu = bloc.code
+			        contenu = contenu.replace("url_quizz",url)
 
 	elif nom == pied:
 		contenu = bloc.code
@@ -349,6 +352,11 @@ def enlever_espaces_inutiles(text):
 	while(text != '' and text[-1] == ' '):
 		text = text[:-1]
 	return(text)
+
+def oui_non_to_bool(txt):
+	""" Reçoit du texte en entrée, et renvoie True si ce texte est 'oui', False sinon."""
+	txt = enlever_espaces_inutiles(txt).lower()
+	return(bool(txt == "oui"))
 
 def enleverPrePostBackspace(text):
 	"""enlève les retours à la ligne au début et à la fin d'une chaîne de caractères"""

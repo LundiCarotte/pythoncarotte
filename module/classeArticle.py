@@ -42,7 +42,7 @@ class Article:
         return((False, True)[self.txt.find(repere) != -1])
 
     def creerDictHtml(self):
-        """ Génère un dictionnaire dont les clés sont les listes de blocs, et les valeurs sont des objets coupleHtml. Stocke ce dictionnaire dans l'objet self."""
+        """ Génère un dictionnaire dont les clés sont les listes de blocs, et les valeurs sont des objets coupleHtml. Stocke ce dictionnaire dans self.dictHtml."""
 
         dictHtml = {}
         listeblocs = self.listeblocs
