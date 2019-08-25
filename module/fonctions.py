@@ -775,7 +775,7 @@ def lc_lire(nom):
 
 
 def ecrire_fichier(nom,data):
-	with open(nom,'w') as f:
+	with open(nom,'w',encoding='utf-8') as f:
 		f.write(data)
 		print("~~~~~~Fichier créé : "+nom)
 

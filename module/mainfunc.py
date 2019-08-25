@@ -28,7 +28,7 @@ def getData(inputString):
 		return None
 
 	# on récupère les données textes
-	with open(fileName, "r") as f:
+	with open(fileName, "r", encoding='utf-8') as f:
 		txt = f.read()
 
 	# on définit le titre web du document
