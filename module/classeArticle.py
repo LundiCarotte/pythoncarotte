@@ -63,7 +63,7 @@ class Article:
         self.dictHtml = dictHtml
 
     def init_html(self):
-        with open(template_article,"r") as f:
+        with open(template_article,"r",encoding='utf-8') as f:
             self.html = f.read()
 
     def ajouter_background(self):
