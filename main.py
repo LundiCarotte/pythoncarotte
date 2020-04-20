@@ -2,10 +2,11 @@
 # -*-coding:utf-8 -*
 
 import sys
-from module.mainfunc import *
+import module.mainfunc as mainfunc
 
 if len(sys.argv) <= 1:
-    print("\nutilisation : '$ ./main.py nom_du_fichier [arguments optionnels]'\n")
+    print("Erreur : nom de fichier manquant.")
+    print("Essayez plutôt : 'python main.py nom_du_fichier [arguments optionnels]'\n")
 else:
-    x = ' '.join(sys.argv[1:])
-    txtenhtml(x)
+    arguments = ' '.join(sys.argv[1:])
+    mainfunc.txtenhtml(arguments)
