@@ -7,17 +7,12 @@ from .fonctions import *
 # FONCTION PRINCIPALE
 #################################################
 
-def txtenhtml(inputString):
-	(data, dataInputString) = getData(inputString)
+def txtenhtml(dataInputString):
+	data = getData(dataInputString)
 	makeFiles(data, dataInputString)
 
-def getData(inputString):
+def getData(dataInputString):
 	"""Reçoit en argument le nom du fichier texte contenant les informations de l'article. Renvoie un objet de la classe Article, dont l'attribut texte contient les informations de l'article."""
-
-	if not inputString: # if void input string
-		return None
-
-	dataInputString = creerListeElemNonVide(inputString)
 
 	fileName = dataInputString[0]
 
@@ -53,7 +48,7 @@ def getData(inputString):
 
 	data = Article(txt_propre,'',titre_web,[])
 
-	return(data, dataInputString)
+	return data
 
 def makeFiles(data, dataInputString):
 

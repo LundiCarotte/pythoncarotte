@@ -15,11 +15,6 @@ from .variables import *
 # MISE EN FORME DE L'INPUT
 #################################################
 
-def creerListeElemNonVide(myString):
-	"""retourne une liste d'éléments non vide en ayant enlevé les espaces de myString"""
-	myList = myString.split(' ')
-	return([i for i in myList if i != ''])
-
 def creerListeBlocs(typeArticle):
 
 	if typeArticle == all:
