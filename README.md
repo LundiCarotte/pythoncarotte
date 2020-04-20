@@ -10,7 +10,9 @@ Ce programme est capable de générer plusieurs fichiers :
 Le programme prend comme argument le nom d'un fichier texte.
 
 exemple de ce que l'on entrerait dans le terminal :
-`python3 main.py biocarburant.txt`
+```
+python3 main.py biocarburant.txt
+```
 
 Le fichier texte doit contenir les balises nécessaires à l'obtention des sections souhaitées dans les fichiers HTML.
 
@@ -101,7 +103,7 @@ Si on ajoute une légende sans modifier la largeur, laisser vide le deuxième ar
 Si la balise `SOUS-TITRE` est présente mais vide (c'est-à-dire : `SOUS-TITRE{}`), `~` sera inséré comme sous-titre.
 
 
-Lorsqu'une balise de type `AJOUT-IMAGE`,`SOUS-TITRE` ou `CITATION` est présente dans le fichier, le texte présent sur la même ligne après les crochets {} est ignoré (permet de commenter facilement, par exemple pour indiquer le nombre de mots d'une sous-partie).
+Lorsqu'une balise de type `AJOUT-IMAGE`, `SOUS-TITRE` ou `CITATION` est présente dans le fichier, le texte présent sur la même ligne après les crochets {} est ignoré (permet de commenter facilement, par exemple pour indiquer le nombre de mots d'une sous-partie).
 
 Les lignes débutant par `//` sont ignorées.
 
@@ -110,9 +112,9 @@ Du texte contenu dans une balise `CODE{}` ne sera pas modifié et sera inséré 
 
 
 
-## Génerer un fichier HTML pour la catégorie /articles de la base de donnée
+## Génerer un fichier HTML pour la catégorie /articles de la base de données
 
-l'option "artsup" génèrera un fichier HTML conçu pour être uploadé sur le site dans la catégorie "article"
+L'option "artsup" génèrera un fichier HTML conçu pour être uploadé sur le site dans la catégorie "article"
 
 exemple :
 `python3 main.py interview2.txt artsup`
