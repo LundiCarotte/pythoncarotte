@@ -11,7 +11,7 @@ while not dossier.endswith('pythoncarotte'):
 if dossier not in sys.path:
     sys.path.append(dossier)
 
-from module.mainfunc import *
+from modules.mainfunc import *
 
 # data = getData('tests/gdoc.txt')[0]
 

@@ -2,7 +2,7 @@
 # -*-coding:utf-8 -*
 
 import sys
-import module.mainfunc as mainfunc
+import modules.mainfunc as mainfunc
 
 if len(sys.argv) <= 1:
     print("Erreur : nom de fichier manquant.")
