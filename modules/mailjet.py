@@ -35,3 +35,13 @@ def scheduleCampaign(credentials, id, date):
     "Date": date
   }
   return callMailjet(credentials, "campaigndraft/{}/schedule".format(id), body)
+
+def testCampaign(credentials, id, email):
+  body = {
+    "Recipients": [
+      {
+        "Email": email
+      }
+    ]
+  }
+  return callMailjet(credentials, "campaigndraft/{}/test".format(id), body)

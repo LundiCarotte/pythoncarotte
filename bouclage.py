@@ -77,6 +77,13 @@ def addCampaignContent(credentials, id, htmlFile):
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
+def testCampaign(credentials, id, email):
+  try:
+    mailjet.testCampaign(credentials, id, email)
+  except Exception as exception:
+    print("Erreur mailjet:", exception.args[0])
+    sys.exit()
+
 def scheduleCampaign(credentials, id, date):
   try:
     mailjet.scheduleCampaign(credentials, id, date + "T04:30:00")
@@ -84,7 +91,7 @@ def scheduleCampaign(credentials, id, date):
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
-def main(subject):
+def main(subject, testEmailAddress):
   credentials = getCredentials()
 
   txtFile = "{0}/{0}.txt".format(subject)
@@ -104,19 +111,19 @@ def main(subject):
   date = getDateFromTxtContent(txtContent)
   title = getTitleFromTxtContent(txtContent)
 
-  print("Création de la campagne...")
   id = createCampaign(credentials, date, subject, title)
   print("Campagne créée")
 
-  print("Ajout du contenu...")
   addCampaignContent(credentials, id, htmlFile)
   print("Contenu de la campagne ajouté")
 
-  print("Programmation de la campagne...")
   scheduleCampaign(credentials, id, date)
   print("Campagne programmée")
+
+  testCampaign(credentials, id, testEmailAddress)
+  print("Email de test envoyé à " + testEmailAddress)
   
   hyperlink = "https://app.mailjet.com/campaigns/creation/" + format(id)
   print("Url de la campagne : " + hyperlink)
 
-main("livre")
+main("livre", "aurelie.valery@gmail.com")
