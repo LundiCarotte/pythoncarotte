@@ -51,40 +51,11 @@ def createCampaign(credentials, date, sujet, title):
   id = response.json()["Data"][0]["ID"]
   return id
 
-def createTemplate(credentials, date, sujet):
-  templateName = "Newsletter " + date + " - " + sujet
-  author = "Lundi Carotte"
-  locale = "fr_FR"
-  
-  try:
-    response = mailjet.createTemplate(credentials, templateName, author, locale)
-  except Exception as exception:
-    print("Erreur mailjet:", exception.args[0])
-    sys.exit()
-
-  id = response.json()["Data"][0]["ID"]
-  return id
-
 def addCampaignContent(credentials, id, htmlFile):
   html = getHtml(htmlFile)
 
   try:
     mailjet.addCampaignContent(credentials, id, html)
-  except Exception as exception:
-    print("Erreur mailjet:", exception.args[0])
-    sys.exit()
-
-def addTemplateContent(credentials, id, htmlFile):
-  html = getHtml(htmlFile)
-
-  senderName = "Lundi Carotte"
-  senderEmail = "hello@lundicarotte.fr"
-  replyEmail = ""
-  fromField = "Lundi Carotte <hello@lundicarotte.fr>"
-  replyTo = ""
-
-  try:
-    mailjet.addTemplateContent(credentials, id, title, senderName, senderEmail, replyEmail, fromField, replyTo, html)
   except Exception as exception:
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
