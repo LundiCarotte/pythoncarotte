@@ -112,18 +112,28 @@ def main(subject, testEmailAddress):
   title = getTitleFromTxtContent(txtContent)
 
   id = createCampaign(credentials, date, subject, title)
+  addCampaignContent(credentials, id, htmlFile)
   print("Campagne créée")
 
-  addCampaignContent(credentials, id, htmlFile)
-  print("Contenu de la campagne ajouté")
-
-  scheduleCampaign(credentials, id, date)
-  print("Campagne programmée")
-
-  testCampaign(credentials, id, testEmailAddress)
-  print("Email de test envoyé à " + testEmailAddress)
-  
   hyperlink = "https://app.mailjet.com/campaigns/creation/" + format(id)
   print("Url de la campagne : " + hyperlink)
 
-main("livre", "aurelie.valery@gmail.com")
+  testCampaign(credentials, id, testEmailAddress)
+  print("Email de test envoyé à " + testEmailAddress)
+
+  answer = None
+  while (answer != "oui"):
+    answer = input("Si tout est correct, entrez 'oui' pour planifier la campagne:")
+
+  scheduleCampaign(credentials, id, date)
+  print("Campagne programmée")
+  
+
+arguments = sys.argv[1:]
+if len(arguments) != 2:
+    print("Erreur : paramètres manquants.")
+    print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr")
+else:
+  subject = arguments[0]
+  testEmailAddress = arguments[1]
+  main(subject, testEmailAddress)
