@@ -1,9 +1,14 @@
 import requests
 
-def getTemplates(credentials):
-  url = 'https://api.mailjet.com/v3/REST/template'
-  response = requests.get(url, auth=credentials)
-  return response.json()['Data']
+def callMailjet(credentials, urlSuffix, body):
+  url = 'https://api.mailjet.com/v3/REST/' + urlSuffix
+  response = requests.post(url, auth=credentials, json=body)
+
+  if (response.status_code != 201):
+    errorMessage = response.json()["ErrorMessage"]
+    raise Exception(errorMessage)
+
+  return response
 
 def createTemplate(credentials, name, author, locale):
   body = {
@@ -13,9 +18,7 @@ def createTemplate(credentials, name, author, locale):
     "LocaleList": [locale],
     "Purposes": ["marketing"]
   }
-  url = 'https://api.mailjet.com/v3/REST/template'
-  response = requests.post(url, auth=credentials, json=body)
-  return response
+  return callMailjet(credentials, "template", body)
 
 def addTemplateContent(credentials, id, title, senderName, senderEmail, replyEmail, fromField, replyTo, html):
   body = {
@@ -29,6 +32,4 @@ def addTemplateContent(credentials, id, title, senderName, senderEmail, replyEma
     },
     "Html-part": html
   }
-  url = "https://api.mailjet.com/v3/REST/template/{}/detailcontent".format(id)
-  response = requests.post(url, auth=credentials, json=body)
-  return response
+  return callMailjet(credentials, "template/{}/detailcontent".format(id), body)

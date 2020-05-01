@@ -38,11 +38,10 @@ def createTemplate(credentials, date, sujet):
   author = "Lundi Carotte"
   locale = "fr_FR"
   
-  response = mailjet.createTemplate(credentials, templateName, author, locale)
-
-  if (response.status_code != 201):
-    errorMessage = response.json()["ErrorMessage"]
-    print("Erreur pendant la génération du template: " + errorMessage)
+  try:
+    response = mailjet.createTemplate(credentials, templateName, author, locale)
+  except Exception as exception:
+    print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
   id = response.json()["Data"][0]["ID"]
@@ -57,7 +56,11 @@ def addTemplateContent(credentials, id, htmlFile):
   fromField = "Lundi Carotte <hello@lundicarotte.fr>"
   replyTo = ""
 
-  mailjet.addTemplateContent(credentials, id, title, senderName, senderEmail, replyEmail, fromField, replyTo, html)
+  try:
+    mailjet.addTemplateContent(credentials, id, title, senderName, senderEmail, replyEmail, fromField, replyTo, html)
+  except Exception as exception:
+    print("Erreur mailjet:", exception.args[0])
+    sys.exit()
 
 def main(sujet, date, title, htmlFile):
   credentials = getCredentials()
