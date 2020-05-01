@@ -33,6 +33,24 @@ def getHtml(fileName):
     html = f.read()
   return html
 
+def createCampaign(credentials, date, sujet, title):
+  locale = "fr_FR"
+  senderId = "1321967"
+  senderEmail = "hello@lundicarotte.fr"
+  senderName = "Lundi Carotte"
+  subject = title
+  contactsListID = 18435
+  title = "Newsletter " + date + " - " + sujet
+
+  try:
+    response = mailjet.createCampaign(credentials, locale, senderId, senderEmail, senderName, subject, contactsListID, title)
+  except Exception as exception:
+    print("Erreur mailjet:", exception.args[0])
+    sys.exit()
+
+  id = response.json()["Data"][0]["ID"]
+  return id
+
 def createTemplate(credentials, date, sujet):
   templateName = "Newsletter " + date + " - " + sujet
   author = "Lundi Carotte"
@@ -46,6 +64,15 @@ def createTemplate(credentials, date, sujet):
 
   id = response.json()["Data"][0]["ID"]
   return id
+
+def addCampaignContent(credentials, id, htmlFile):
+  html = getHtml(htmlFile)
+
+  try:
+    mailjet.addCampaignContent(credentials, id, html)
+  except Exception as exception:
+    print("Erreur mailjet:", exception.args[0])
+    sys.exit()
 
 def addTemplateContent(credentials, id, htmlFile):
   html = getHtml(htmlFile)
@@ -62,17 +89,30 @@ def addTemplateContent(credentials, id, htmlFile):
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
+def scheduleCampaign(credentials, id, date):
+  try:
+    mailjet.scheduleCampaign(credentials, id, date + "T04:30:00")
+  except Exception as exception:
+    print("Erreur mailjet:", exception.args[0])
+    sys.exit()
+
 def main(sujet, date, title, htmlFile):
   credentials = getCredentials()
 
-  print("Création du template...")
-  id = createTemplate(credentials, date, sujet)
-  print("Template créé")
+  print("Création de la campagne...")
+  id = createCampaign(credentials, date, sujet, title)
+  print("Campagne créée")
 
   print("Ajout du contenu...")
-  addTemplateContent(credentials, id, htmlFile)
-  hyperlink = "https://app.mailjet.com/template/" + format(id) + "/html"
-  print("Contenu du template ajouté, merci de le vérifier manuellement: " + hyperlink)
+  addCampaignContent(credentials, id, htmlFile)
+  print("Contenu de la campagne ajouté")
+
+  print("Programmation de la campagne...")
+  scheduleCampaign(credentials, id, date)
+  print("Campagne programmée")
+  
+  hyperlink = "https://app.mailjet.com/campaigns/creation/" + format(id)
+  print("Url de la campagne : " + hyperlink)
 
 sujet = "test avalery"
 date = "2020-05-04"

@@ -33,3 +33,29 @@ def addTemplateContent(credentials, id, title, senderName, senderEmail, replyEma
     "Html-part": html
   }
   return callMailjet(credentials, "template/{}/detailcontent".format(id), body)
+
+def createCampaign(credentials, locale, senderID, senderEmail, senderName, subject, contactsListID, title):
+  body = {
+    "EditMode": "html2",
+    "IsTextPartIncluded": True,
+    "Locale": locale,
+    "Sender": senderID,
+    "SenderEmail": senderEmail,
+    "SenderName": senderName,
+    "Subject": subject,
+    "ContactsListID": contactsListID,
+    "Title": title,
+  }
+  return callMailjet(credentials, "campaigndraft", body)
+
+def addCampaignContent(credentials, id, html):
+  body = {
+    "Html-part": html
+  }
+  return callMailjet(credentials, "campaigndraft/{}/detailcontent".format(id), body)
+
+def scheduleCampaign(credentials, id, date):
+  body = {
+    "Date": date
+  }
+  return callMailjet(credentials, "campaigndraft/{}/schedule".format(id), body)
