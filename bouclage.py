@@ -1,5 +1,7 @@
+import dateparser
 import json
 import os.path
+import re
 import requests
 import sys
 
@@ -32,6 +34,21 @@ def getHtml(fileName):
   with open(fileName, "r", encoding="utf-8") as f:
     html = f.read()
   return html
+
+def getFieldFromTxtContent(txtContent, field):
+  regex = ".*" + field + "{([^}]*)}.*"
+  match = re.match(regex, txtContent, re.DOTALL)
+  fieldContent = match.group(1)
+  return fieldContent
+
+def getDateFromTxtContent(txtContent):
+  dateToParse = getFieldFromTxtContent(txtContent, "DATE-ARTICLE")
+  date = dateparser.parse(dateToParse).date()
+  dateAsString = date.strftime("%Y-%m-%d")
+  return dateAsString
+
+def getTitleFromTxtContent(txtContent):
+  return getFieldFromTxtContent(txtContent, "TITRE-PAGE")
 
 def createCampaign(credentials, date, sujet, title):
   locale = "fr_FR"
@@ -67,11 +84,28 @@ def scheduleCampaign(credentials, id, date):
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
-def main(sujet, date, title, htmlFile):
+def main(subject):
   credentials = getCredentials()
 
+  txtFile = "{0}/{0}.txt".format(subject)
+  htmlFile = "{0}/mail-lundicarotte-{0}.html".format(subject)
+
+  if not os.path.isfile(txtFile):
+    print("Erreur : le fichier {0} n'existe pas.".format(txtFile))
+    sys.exit()
+
+  if not os.path.isfile(htmlFile):
+    print("Erreur : le fichier {0} n'existe pas.".format(htmlFile))
+    sys.exit()
+
+  with open(txtFile, "r", encoding="utf-8") as file:
+    txtContent = file.read()
+
+  date = getDateFromTxtContent(txtContent)
+  title = getTitleFromTxtContent(txtContent)
+
   print("Création de la campagne...")
-  id = createCampaign(credentials, date, sujet, title)
+  id = createCampaign(credentials, date, subject, title)
   print("Campagne créée")
 
   print("Ajout du contenu...")
@@ -85,9 +119,4 @@ def main(sujet, date, title, htmlFile):
   hyperlink = "https://app.mailjet.com/campaigns/creation/" + format(id)
   print("Url de la campagne : " + hyperlink)
 
-sujet = "test avalery"
-date = "2020-05-04"
-title = "À l’assaut du livre"
-htmlFile = "C:/dev/pythoncarotte/livre/mail-lundicarotte-livre.html"
-
-main(sujet, date, title, htmlFile)
+main("livre")

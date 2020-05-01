@@ -10,30 +10,6 @@ def callMailjet(credentials, urlSuffix, body):
 
   return response
 
-def createTemplate(credentials, name, author, locale):
-  body = {
-    "Name": name,
-    "Author": author,
-    "Locale": locale,
-    "LocaleList": [locale],
-    "Purposes": ["marketing"]
-  }
-  return callMailjet(credentials, "template", body)
-
-def addTemplateContent(credentials, id, title, senderName, senderEmail, replyEmail, fromField, replyTo, html):
-  body = {
-    "Headers": {
-      "Subject": title,
-      "SenderName": senderName,
-      "SenderEmail": senderEmail,
-      "ReplyEmail": replyEmail,
-      "From": fromField,
-      "Reply-To": replyTo
-    },
-    "Html-part": html
-  }
-  return callMailjet(credentials, "template/{}/detailcontent".format(id), body)
-
 def createCampaign(credentials, locale, senderID, senderEmail, senderName, subject, contactsListID, title):
   body = {
     "EditMode": "html2",
