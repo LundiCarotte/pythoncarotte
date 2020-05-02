@@ -23,7 +23,7 @@ elif len(arguments) == 2:
         print("ERREUR: format de fichier '{0}' invalide.".format(format))
         print("Formats autorisés: artsup, minimail.")
     else:
-    mainfunc.txtenhtml(fileName, format)
+        mainfunc.txtenhtml(fileName, format)
 
 elif len(arguments) > 2:
     print("ERREUR: n'entrez pas plus de 2 arguments svp :)")
