@@ -32,17 +32,16 @@ def getData(fileName):
 	while titre_web == '':
 		titre_web = input("Entrez le titre web du fichier : ")
 
-
 	# on crée le dossier qui va contenir les fichiers HTML
-	if not os.path.exists(titre_web):
-	    os.makedirs(titre_web)
-
-
+	folder = "articles/{0}".format(titre_web)
+	if not os.path.exists(folder):
+	    os.makedirs(folder)
 
 	# ici on génère un fichier "propre" à partir du fichier transmis
 	listeblocs = creerListeBlocs(all)
-	txt_propre = creerFichierTextePropre(txt,listeblocs)
-	ecrire_fichier(titre_web+'/'+titre_web+'.txt',txt_propre)
+	txt_propre = creerFichierTextePropre(txt, listeblocs)
+	cheminFichier = "articles/{0}/{0}.txt".format(titre_web)
+	ecrire_fichier(cheminFichier,txt_propre)
 
 	data = Article(txt_propre,'',titre_web,[])
 

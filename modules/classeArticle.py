@@ -108,22 +108,20 @@ class Article:
         self.html = self.html.replace(reph.carotte,tag.carotte)
 
     def generer_nom_html(self):
-        begin = self.titre_web
-        mid = "/lundicarotte-"
-        end = self.titre_web+".html"
+        filePrefix = "lundicarotte"
         if self.categorie == "mail":
-            mid = "/mail-lundicarotte-"
+            filePrefix = "mail-lundicarotte"
         if self.categorie == "artsup":
-            mid = "/article-"
-        self.nom_fichier_html = begin + mid + end
+            filePrefix = "article"
+        self.nom_fichier_html = "articles/{0}/{1}-{0}.html".format(self.titre_web, filePrefix)
 
     def ecrire_html(self):
         ecrire_fichier(self.nom_fichier_html,self.html)
 
     def generer_json(self):
-    	nom_json = self.titre_web+"/"+self.titre_web+".json"
-    	url_image = extrairecurly(self.txt,creerBloc(image).repereTexte)
-    	titre_page = extrairecurly(self.txt,creerBloc(titre).repereTexte)
-    	description = extrairecurly(self.txt,rep.partage_description)
-    	json = creer_json(self.titre_web,url_image,titre_page,description)
-    	ecrire_fichier(nom_json,json)
+        nom_json = "articles/{0}/{0}.json".format(self.titre_web)
+        url_image = extrairecurly(self.txt,creerBloc(image).repereTexte)
+        titre_page = extrairecurly(self.txt,creerBloc(titre).repereTexte)
+        description = extrairecurly(self.txt,rep.partage_description)
+        json = creer_json(self.titre_web,url_image,titre_page,description)
+        ecrire_fichier(nom_json,json)
