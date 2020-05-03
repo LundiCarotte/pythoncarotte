@@ -1,4 +1,4 @@
-# import dateparser
+import dateparser
 import json
 import os.path
 import re
@@ -91,7 +91,7 @@ def scheduleCampaign(credentials, id, date):
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
-def main(subject, date, testEmailAddress):
+def main(subject, testEmailAddress):
   credentials = getCredentials()
 
   txtFile = "{0}/{0}.txt".format(subject)
@@ -108,7 +108,7 @@ def main(subject, date, testEmailAddress):
   with open(txtFile, "r", encoding="utf-8") as file:
     txtContent = file.read()
 
-  # date = getDateFromTxtContent(txtContent)
+  date = getDateFromTxtContent(txtContent)
   title = getTitleFromTxtContent(txtContent)
 
   id = createCampaign(credentials, date, subject, title)
@@ -130,11 +130,10 @@ def main(subject, date, testEmailAddress):
   
 
 arguments = sys.argv[1:]
-if len(arguments) != 3:
+if len(arguments) != 2:
     print("Erreur : paramètres manquants.")
     print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr")
 else:
   subject = arguments[0]
-  date = arguments[1]
-  testEmailAddress = arguments[2]
-  main(subject, date, testEmailAddress)
+  testEmailAddress = arguments[1]
+  main(subject, testEmailAddress)
