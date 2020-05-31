@@ -4,3 +4,5 @@ __pycache__/
 *$py.class
 
 /mailjet-apikey.json
+articles/*
+/*.txt
