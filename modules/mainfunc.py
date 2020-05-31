@@ -7,14 +7,12 @@ from .fonctions import *
 # FONCTION PRINCIPALE
 #################################################
 
-def txtenhtml(dataInputString):
-	data = getData(dataInputString)
-	makeFiles(data, dataInputString)
+def txtenhtml(fileName, format):
+	data = getData(fileName)
+	makeFiles(data, format)
 
-def getData(dataInputString):
+def getData(fileName):
 	"""Reçoit en argument le nom du fichier texte contenant les informations de l'article. Renvoie un objet de la classe Article, dont l'attribut texte contient les informations de l'article."""
-
-	fileName = dataInputString[0]
 
 	# ensuite on vérifie l'existence du fichier en .txt
 	# si le fichier texte n'existe pas, on arrête la fonction
@@ -34,32 +32,28 @@ def getData(dataInputString):
 	while titre_web == '':
 		titre_web = input("Entrez le titre web du fichier : ")
 
-
 	# on crée le dossier qui va contenir les fichiers HTML
-	if not os.path.exists(titre_web):
-	    os.makedirs(titre_web)
-
-
+	folder = "articles/{0}".format(titre_web)
+	if not os.path.exists(folder):
+	    os.makedirs(folder)
 
 	# ici on génère un fichier "propre" à partir du fichier transmis
 	listeblocs = creerListeBlocs(all)
-	txt_propre = creerFichierTextePropre(txt,listeblocs)
-	ecrire_fichier(titre_web+'/'+titre_web+'.txt',txt_propre)
+	txt_propre = creerFichierTextePropre(txt, listeblocs)
+	cheminFichier = "articles/{0}/{0}.txt".format(titre_web)
+	ecrire_fichier(cheminFichier,txt_propre)
 
 	data = Article(txt_propre,'',titre_web,[])
 
 	return data
 
-def makeFiles(data, dataInputString):
+def makeFiles(data, format):
 
-	############ QUEL TYPE DE FICHIER VEUT-ON ? ############
+	############ QUEL FORMAT DE FICHIER VEUT-ON ? ############
 
-	# CHOIX N 1
+	# CHOIX N 1 : hebdomadaire
 	#
-	# si on veut un hebdomadaire
-	#
-	# dans ce cas le seul argument passé en ligne de commande est le nom du fichier texte
-	if (len(dataInputString) == 1):
+	if (format == "hebdomadaire"):
 
 		############ CRÉATION FICHIER MAIL ############
 		#
@@ -82,26 +76,16 @@ def makeFiles(data, dataInputString):
 		# also json
 		article.generer_json()
 
-
 	# CHOIX N 2
-
-	if (len(dataInputString) == 2):
-
-		# si on veut un fichier html pour la catégorie lundicarotte.fr/articles/ :
-		if dataInputString[1] == "artsup":
-			# faire l'article sup en chargeant le bon template
-			article = Article(data.txt,"artsup",data.titre_web,listeblocs_artsup)
-			article.generer_html()
-
+	# si on veut un fichier html pour la catégorie lundicarotte.fr/articles/ :
+	elif (format == "artsup"):
+		# faire l'article sup en chargeant le bon template
+		article = Article(data.txt,"artsup",data.titre_web,listeblocs_artsup)
+		article.generer_html()
+	elif (format == "minimail"):
 		# si on veut un minimail de type "les vacances de lundicarotte" :
-		elif dataInputString[1] == "minimail":
-			listeblocs = [logo,titre,date,intro,dev,outro,auteurs,partage,don,pied]
-			article = Article(data.txt,"mail",data.titre_web,listeblocs)
-			article.generer_html()
-		else:
-			print("argument invalide")
-			return None
-
-	if (len(dataInputString) > 2):
-		print("\nN'entrez pas plus de 2 arguments svp :)\n")
-		return None
+		listeblocs = [logo,titre,date,intro,dev,outro,auteurs,partage,don,pied]
+		article = Article(data.txt,"mail",data.titre_web,listeblocs)
+		article.generer_html()
+	else:
+		raise Exception("Wrong content for string format: " + format)
