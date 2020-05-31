@@ -94,8 +94,8 @@ def scheduleCampaign(credentials, id, date):
 def main(subject, testEmailAddress):
   credentials = getCredentials()
 
-  txtFile = "{0}/{0}.txt".format(subject)
-  htmlFile = "{0}/mail-lundicarotte-{0}.html".format(subject)
+  txtFile = "articles/{0}/{0}.txt".format(subject)
+  htmlFile = "articles/{0}/mail-lundicarotte-{0}.html".format(subject)
 
   if not os.path.isfile(txtFile):
     print("Erreur : le fichier {0} n'existe pas.".format(txtFile))
