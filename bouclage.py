@@ -7,7 +7,11 @@ import sys
 
 import modules.mailjet as mailjet
 
+######### VARIABLES #########
+
 CACHE_FILE = "mailjet-apikey.json"
+
+######### FUNCTIONS #########
 
 def getCredentials():
   if os.path.isfile(CACHE_FILE):
@@ -91,7 +95,7 @@ def scheduleCampaign(credentials, id, date):
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
-def main(subject, testEmailAddress):
+def main(subject, testEmailAddresses):
   credentials = getCredentials()
 
   txtFile = "articles/{0}/{0}.txt".format(subject)
@@ -117,9 +121,10 @@ def main(subject, testEmailAddress):
 
   hyperlink = "https://app.mailjet.com/campaigns/creation/" + format(id)
   print("Url de la campagne : " + hyperlink)
-
-  testCampaign(credentials, id, testEmailAddress)
-  print("Email de test envoyé à " + testEmailAddress)
+  
+  for email in testEmailAddresses:
+    testCampaign(credentials, id, email)
+    print("Email de test envoyé à " + email)
 
   answer = None
   while (answer != "oui"):
@@ -128,12 +133,13 @@ def main(subject, testEmailAddress):
   scheduleCampaign(credentials, id, date)
   print("Campagne programmée")
   
+######### SCRIPT #########
 
 arguments = sys.argv[1:]
 if len(arguments) != 2:
-    print("Erreur : paramètres manquants.")
-    print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr")
+    print("ERREUR : paramètres manquants.")
+    print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr,servane.courtaux@lundicarotte.fr")
 else:
   subject = arguments[0]
-  testEmailAddress = arguments[1]
-  main(subject, testEmailAddress)
+  testEmailAddresses = arguments[1].split(",")
+  main(subject, testEmailAddresses)
