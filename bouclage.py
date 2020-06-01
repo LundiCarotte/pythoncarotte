@@ -13,6 +13,12 @@ CACHE_FILE = "mailjet-apikey.json"
 
 ######### FUNCTIONS #########
 
+def askUntilNotEmpty(question):
+  answer = None
+  while (not answer):
+    answer = input(question)
+  return answer
+
 def getCredentials():
   if os.path.isfile(CACHE_FILE):
     with open(CACHE_FILE) as jsonFile:
@@ -22,12 +28,22 @@ def getCredentials():
     print("C'est la première fois que vous utilisez ce script, merci de rentrer la clé d'API, disponible à l'url suivant :")
     print("https://app.mailjet.com/account/api_keys")
 
-    apiKey = input("Clé d'API : ")
-    secretKey = input("Clé Secrète : ")
+    apiKey = askUntilNotEmpty("Clé d'API : ")
+    secretKey = askUntilNotEmpty("Clé Secrète : ")
+    
     credentials = {
       "APIKey": apiKey,
       "SecretKey": secretKey
     }
+
+    # Make a simple call to check if credentials are valid, before saving them
+    try:
+      mailjet.getContactsList(credentials)
+    except:
+      # TODO : catcher la bonne exception
+      # TODO : relancer la demande de clé tant que ce n'est pas correct
+      print("ERREUR : la clé d'API n'est pas correcte, merci de relancer le script")
+      exit()
 
     credentialsJson = json.dumps(credentials)
     with open(CACHE_FILE, 'w', encoding='utf-8') as f:
@@ -96,6 +112,13 @@ def scheduleCampaign(credentials, id, date):
     sys.exit()
 
 def main(subject, testEmailAddresses):
+  # Check inputs
+  for email in testEmailAddresses:
+    if not re.match(".+@.+\..+", email):
+      print("ERREUR : {0} ne ressemble pas à une adresse mail".format(email))
+      exit()
+      return
+
   credentials = getCredentials()
 
   txtFile = "articles/{0}/{0}.txt".format(subject)
@@ -121,7 +144,7 @@ def main(subject, testEmailAddresses):
 
   hyperlink = "https://app.mailjet.com/campaigns/creation/" + format(id)
   print("Url de la campagne : " + hyperlink)
-  
+
   for email in testEmailAddresses:
     testCampaign(credentials, id, email)
     print("Email de test envoyé à " + email)
@@ -135,11 +158,16 @@ def main(subject, testEmailAddresses):
   
 ######### SCRIPT #########
 
-arguments = sys.argv[1:]
-if len(arguments) != 2:
-    print("ERREUR : paramètres manquants.")
-    print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr,servane.courtaux@lundicarotte.fr")
-else:
-  subject = arguments[0]
-  testEmailAddresses = arguments[1].split(",")
-  main(subject, testEmailAddresses)
+# To avoid errors, change the current directory to the parent directory of this file
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+# arguments = sys.argv[1:]
+# if len(arguments) != 2:
+#     print("ERREUR : paramètres manquants.")
+#     print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr,servane.courtaux@lundicarotte.fr")
+# else:
+  # subject = arguments[0]
+  # testEmailAddresses = arguments[1].split(",")
+  # main(subject, testEmailAddresses)
+
+main("livre", ["aurelie.valery@lundicarotte.fr"])

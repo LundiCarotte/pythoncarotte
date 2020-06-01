@@ -1,14 +1,26 @@
 import requests
 
-def callMailjet(credentials, urlSuffix, body):
-  url = 'https://api.mailjet.com/v3/REST/' + urlSuffix
-  response = requests.post(url, auth=credentials, json=body)
+BASE_URL = "https://api.mailjet.com/v3/REST/"
 
-  if (response.status_code != 201):
+def checkErrors(response):
+  if (response.status_code != 201 and response.status_code != 200):
     errorMessage = response.json()["ErrorMessage"]
     raise Exception(errorMessage)
 
+def postMailjet(credentials, urlSuffix, body):
+  url = BASE_URL + urlSuffix
+  response = requests.post(url, auth=credentials, json=body)
+  checkErrors(response)
   return response
+
+def getMailjet(credentials, urlSuffix):
+  url = BASE_URL + urlSuffix
+  response = requests.get(url, auth=(credentials["APIKey"], credentials["SecretKey"]))
+  checkErrors(response)
+  return response
+
+def getContactsList(credentials):
+  return getMailjet(credentials, "contactslist")
 
 def createCampaign(credentials, locale, senderID, senderEmail, senderName, subject, contactsListID, title):
   body = {
@@ -22,19 +34,19 @@ def createCampaign(credentials, locale, senderID, senderEmail, senderName, subje
     "ContactsListID": contactsListID,
     "Title": title,
   }
-  return callMailjet(credentials, "campaigndraft", body)
+  return postMailjet(credentials, "campaigndraft", body)
 
 def addCampaignContent(credentials, id, html):
   body = {
     "Html-part": html
   }
-  return callMailjet(credentials, "campaigndraft/{}/detailcontent".format(id), body)
+  return postMailjet(credentials, "campaigndraft/{}/detailcontent".format(id), body)
 
 def scheduleCampaign(credentials, id, date):
   body = {
     "Date": date
   }
-  return callMailjet(credentials, "campaigndraft/{}/schedule".format(id), body)
+  return postMailjet(credentials, "campaigndraft/{}/schedule".format(id), body)
 
 def testCampaign(credentials, id, email):
   body = {
@@ -44,4 +56,4 @@ def testCampaign(credentials, id, email):
       }
     ]
   }
-  return callMailjet(credentials, "campaigndraft/{}/test".format(id), body)
+  return postMailjet(credentials, "campaigndraft/{}/test".format(id), body)
