@@ -29,21 +29,22 @@ def getCredentials():
     print("C'est la première fois que vous utilisez ce script, merci de rentrer la clé d'API, disponible à l'url suivant :")
     print("https://app.mailjet.com/account/api_keys")
 
-    apiKey = askUntilNotEmpty("Clé d'API : ")
-    secretKey = askUntilNotEmpty("Clé Secrète : ")
-    
-    credentials = {
-      "APIKey": apiKey,
-      "SecretKey": secretKey
-    }
+    credentials = None
+    while (not credentials):
+      apiKey = askUntilNotEmpty("Clé d'API : ")
+      secretKey = askUntilNotEmpty("Clé Secrète : ")
+      
+      credentials = {
+        "APIKey": apiKey,
+        "SecretKey": secretKey
+      }
 
-    # Make a simple call to check if credentials are valid, before saving them
-    try:
-      mailjet.getContactsList(credentials)
-    except AuthenticationException:
-      # TODO : relancer la demande de clé tant que ce n'est pas correct
-      print("ERREUR : la clé d'API n'est pas correcte, merci de relancer le script")
-      exit()
+      # Make a simple call to check if credentials are valid, before saving them
+      try:
+        mailjet.getContactsList(credentials)
+      except AuthenticationException:
+        print("ERREUR : la clé d'API n'est pas correcte. Rééessayez.")
+        credentials = None
 
     credentialsJson = json.dumps(credentials)
     with open(CACHE_CREDENTIALS_FILE, 'w', encoding='utf-8') as f:
@@ -121,6 +122,8 @@ def main(subject, testEmailAddresses):
   validateEmails(testEmailAddresses)
 
   credentials = getCredentials()
+
+  return
 
   txtFile = "articles/{0}/{0}.txt".format(subject)
   htmlFile = "articles/{0}/mail-lundicarotte-{0}.html".format(subject)
