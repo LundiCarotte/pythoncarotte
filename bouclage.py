@@ -11,6 +11,7 @@ from modules.AuthenticationException import AuthenticationException
 ######### VARIABLES #########
 
 CACHE_CREDENTIALS_FILE = "mailjet-apikey.json"
+MAILJET_CONTACT_LIST_ID = 18435
 
 ######### FUNCTIONS #########
 
@@ -51,11 +52,6 @@ def getCredentials():
     		f.write(credentialsJson)
     return (apiKey, secretKey)
 
-def getHtml(fileName):
-  with open(fileName, "r", encoding="utf-8") as f:
-    html = f.read()
-  return html
-
 def getFieldFromTxtContent(txtContent, field):
   regex = ".*" + field + "{([^}]*)}.*"
   match = re.match(regex, txtContent, re.DOTALL)
@@ -93,7 +89,7 @@ def createCampaign(credentials, date, topic, title):
   senderEmail = "hello@lundicarotte.fr"
   senderName = "Lundi Carotte"
   subject = title
-  contactsListID = 18435
+  contactsListID = MAILJET_CONTACT_LIST_ID
   title = "Newsletter " + date + " - " + topic
 
   try:
@@ -106,7 +102,8 @@ def createCampaign(credentials, date, topic, title):
   return id
 
 def addCampaignContent(credentials, id, htmlFile):
-  html = getHtml(htmlFile)
+  with open(htmlFile, "r", encoding="utf-8") as f:
+    html = f.read()
 
   try:
     mailjet.addCampaignContent(credentials, id, html)
@@ -157,6 +154,7 @@ def main(topic, testEmailAddresses):
   title = getTitleFromTxtContent(txtContent)
 
   id = createCampaign(credentials, date, topic, title)
+
   addCampaignContent(credentials, id, htmlFile)
   print("Campagne créée")
 
@@ -168,11 +166,15 @@ def main(topic, testEmailAddresses):
     print("Email de test envoyé à " + email)
 
   answer = None
-  while (answer != "oui"):
-    answer = input("Si tout est correct, entrez 'oui' pour planifier la campagne:")
+  while not answer in ["oui", "non"]:
+    print("Vérifiez si tout vous semble correct. Si oui, la campagne sera planifiée. Si non, elle sera supprimée et le script s'arrêtera.")
+    answer = input("Est-ce que tout vous semble correct? (oui/non) ")
 
-  scheduleCampaign(credentials, id, date)
-  print("Campagne programmée")
+  if answer == "oui":
+    scheduleCampaign(credentials, id, date)
+    print("Campagne programmée")
+  else:
+    print("TODO : supprimer la campagne")
   
 ######### SCRIPT #########
 
