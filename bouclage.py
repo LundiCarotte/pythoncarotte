@@ -59,17 +59,33 @@ def getHtml(fileName):
 def getFieldFromTxtContent(txtContent, field):
   regex = ".*" + field + "{([^}]*)}.*"
   match = re.match(regex, txtContent, re.DOTALL)
-  fieldContent = match.group(1)
-  return fieldContent
+  if match:
+    fieldContent = match.group(1)
+    return fieldContent
+  else:
+    return None
 
 def getDateFromTxtContent(txtContent):
   dateToParse = getFieldFromTxtContent(txtContent, "DATE-ARTICLE")
-  date = dateparser.parse(dateToParse).date()
+  if not dateToParse:
+    print("ERREUR : le fichier txt ne contient pas de balise DATE-ARTICLE")
+    exit()
+
+  try:
+    date = dateparser.parse(dateToParse).date()
+  except AttributeError:
+    print("ERREUR : la date n'a pas pu être déduite, la balise DATE-ARTICLE dans le fichier txt (valeur : {0}) est probablement mal écrite.".format(dateToParse))
+    exit()
+
   dateAsString = date.strftime("%Y-%m-%d")
   return dateAsString
 
 def getTitleFromTxtContent(txtContent):
-  return getFieldFromTxtContent(txtContent, "TITRE-PAGE")
+  titre = getFieldFromTxtContent(txtContent, "TITRE-PAGE")
+  if not titre:
+    print("ERREUR : le fichier txt ne contient pas de balise TITRE-PAGE")
+    exit()
+  return titre
 
 def createCampaign(credentials, date, topic, title):
   locale = "fr_FR"
@@ -134,10 +150,8 @@ def main(topic, testEmailAddresses):
   validateFile(txtFile)
   validateFile(htmlFile)
 
-  return
-
-  with open(txtFile, "r", encoding="utf-8") as file:
-    txtContent = file.read()
+  with open(txtFile, "r", encoding="utf-8") as f:
+    txtContent = f.read()
 
   date = getDateFromTxtContent(txtContent)
   title = getTitleFromTxtContent(txtContent)
