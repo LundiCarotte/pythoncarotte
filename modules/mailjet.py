@@ -1,11 +1,16 @@
 import requests
 
+from .AuthenticationException import AuthenticationException
+
 BASE_URL = "https://api.mailjet.com/v3/REST/"
 
 def checkErrors(response):
   if (response.status_code != 201 and response.status_code != 200):
-    errorMessage = response.json()["ErrorMessage"]
-    raise Exception(errorMessage)
+    try:
+      errorMessage = response.json()["ErrorMessage"]
+      raise Exception(errorMessage)
+    except ValueError:
+      raise AuthenticationException()
 
 def postMailjet(credentials, urlSuffix, body):
   url = BASE_URL + urlSuffix

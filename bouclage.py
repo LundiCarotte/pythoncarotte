@@ -6,10 +6,11 @@ import requests
 import sys
 
 import modules.mailjet as mailjet
+from modules.AuthenticationException import AuthenticationException
 
 ######### VARIABLES #########
 
-CACHE_FILE = "mailjet-apikey.json"
+CACHE_CREDENTIALS_FILE = "mailjet-apikey.json"
 
 ######### FUNCTIONS #########
 
@@ -20,8 +21,8 @@ def askUntilNotEmpty(question):
   return answer
 
 def getCredentials():
-  if os.path.isfile(CACHE_FILE):
-    with open(CACHE_FILE) as jsonFile:
+  if os.path.isfile(CACHE_CREDENTIALS_FILE):
+    with open(CACHE_CREDENTIALS_FILE) as jsonFile:
       credentials = json.load(jsonFile)
     return (credentials["APIKey"], credentials["SecretKey"])
   else:
@@ -39,14 +40,13 @@ def getCredentials():
     # Make a simple call to check if credentials are valid, before saving them
     try:
       mailjet.getContactsList(credentials)
-    except:
-      # TODO : catcher la bonne exception
+    except AuthenticationException:
       # TODO : relancer la demande de clé tant que ce n'est pas correct
       print("ERREUR : la clé d'API n'est pas correcte, merci de relancer le script")
       exit()
 
     credentialsJson = json.dumps(credentials)
-    with open(CACHE_FILE, 'w', encoding='utf-8') as f:
+    with open(CACHE_CREDENTIALS_FILE, 'w', encoding='utf-8') as f:
     		f.write(credentialsJson)
     return (apiKey, secretKey)
 
@@ -111,13 +111,14 @@ def scheduleCampaign(credentials, id, date):
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
-def main(subject, testEmailAddresses):
-  # Check inputs
-  for email in testEmailAddresses:
+def validateEmails(emailAddresses):
+  for email in emailAddresses:
     if not re.match(".+@.+\..+", email):
       print("ERREUR : {0} ne ressemble pas à une adresse mail".format(email))
       exit()
-      return
+
+def main(subject, testEmailAddresses):
+  validateEmails(testEmailAddresses)
 
   credentials = getCredentials()
 
