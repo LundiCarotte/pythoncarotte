@@ -71,14 +71,14 @@ def getDateFromTxtContent(txtContent):
 def getTitleFromTxtContent(txtContent):
   return getFieldFromTxtContent(txtContent, "TITRE-PAGE")
 
-def createCampaign(credentials, date, sujet, title):
+def createCampaign(credentials, date, topic, title):
   locale = "fr_FR"
   senderId = "1321967"
   senderEmail = "hello@lundicarotte.fr"
   senderName = "Lundi Carotte"
   subject = title
   contactsListID = 18435
-  title = "Newsletter " + date + " - " + sujet
+  title = "Newsletter " + date + " - " + topic
 
   try:
     response = mailjet.createCampaign(credentials, locale, senderId, senderEmail, senderName, subject, contactsListID, title)
@@ -118,23 +118,23 @@ def validateEmails(emailAddresses):
       print("ERREUR : {0} ne ressemble pas à une adresse mail".format(email))
       exit()
 
-def main(subject, testEmailAddresses):
+def validateFile(path):
+  if not os.path.isfile(path):
+    print("Erreur : le fichier {0} n'existe pas.".format(path))
+    sys.exit()
+
+def main(topic, testEmailAddresses):
   validateEmails(testEmailAddresses)
 
   credentials = getCredentials()
 
+  txtFile = "articles/{0}/{0}.txt".format(topic)
+  htmlFile = "articles/{0}/mail-lundicarotte-{0}.html".format(topic)
+
+  validateFile(txtFile)
+  validateFile(htmlFile)
+
   return
-
-  txtFile = "articles/{0}/{0}.txt".format(subject)
-  htmlFile = "articles/{0}/mail-lundicarotte-{0}.html".format(subject)
-
-  if not os.path.isfile(txtFile):
-    print("Erreur : le fichier {0} n'existe pas.".format(txtFile))
-    sys.exit()
-
-  if not os.path.isfile(htmlFile):
-    print("Erreur : le fichier {0} n'existe pas.".format(htmlFile))
-    sys.exit()
 
   with open(txtFile, "r", encoding="utf-8") as file:
     txtContent = file.read()
@@ -142,7 +142,7 @@ def main(subject, testEmailAddresses):
   date = getDateFromTxtContent(txtContent)
   title = getTitleFromTxtContent(txtContent)
 
-  id = createCampaign(credentials, date, subject, title)
+  id = createCampaign(credentials, date, topic, title)
   addCampaignContent(credentials, id, htmlFile)
   print("Campagne créée")
 
@@ -170,8 +170,8 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 #     print("ERREUR : paramètres manquants.")
 #     print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr,servane.courtaux@lundicarotte.fr")
 # else:
-  # subject = arguments[0]
+  # topic = arguments[0]
   # testEmailAddresses = arguments[1].split(",")
-  # main(subject, testEmailAddresses)
+  # main(topic, testEmailAddresses)
 
 main("livre", ["aurelie.valery@lundicarotte.fr"])
