@@ -193,13 +193,11 @@ def main(topic, testEmailAddresses):
 # To avoid errors, change the current directory to the parent directory of this file
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-# arguments = sys.argv[1:]
-# if len(arguments) != 2:
-#     print("ERREUR : paramètres manquants.")
-#     print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr,servane.courtaux@lundicarotte.fr")
-# else:
-  # topic = arguments[0]
-  # testEmailAddresses = arguments[1].split(",")
-  # main(topic, testEmailAddresses)
-
-main("livre", ["aurelie.valery@lundicarotte.fr"])
+arguments = sys.argv[1:]
+if len(arguments) != 2:
+    print("ERREUR : paramètres manquants.")
+    print("Essayez plutôt : 'python bouclage.py livre aurelie.valery@lundicarotte.fr,servane.courtaux@lundicarotte.fr")
+else:
+  topic = arguments[0]
+  testEmailAddresses = arguments[1].split(",")
+  main(topic, testEmailAddresses)
