@@ -158,7 +158,18 @@ def main(topic, testEmailAddresses):
   print("Campagne créée")
 
   hyperlink = "https://app.mailjet.com/campaigns/creation/" + format(id)
-  print("Url de la campagne : " + hyperlink)
+
+  print("Merci de générer la version texte du mail :")
+  print("     - Ouvrir la campagne : " + hyperlink)
+  print("       (si besoin, le mot de passe est sur LastPass)")
+  print("     - Cliquer sur 'Modifier l'email'")
+  print("     - En haut à droite, cliquer sur 'Texte'")
+  print("     - Cliquer sur 'Générer une version texte à partir du HTML', 'Confirmer'")
+  print("     - Cliquer sur 'Récapitulatif et Envoi'")
+
+  answer = None
+  while answer != "oui":
+    answer = input("Est-ce que c'est fait ? (oui) ")
 
   for email in testEmailAddresses:
     testCampaign(credentials, id, email)
