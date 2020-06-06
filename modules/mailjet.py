@@ -18,6 +18,12 @@ def postMailjet(credentials, urlSuffix, body):
   checkErrors(response)
   return response
 
+def putMailjet(credentials, urlSuffix, body):
+  url = BASE_URL + urlSuffix
+  response = requests.put(url, auth=credentials, json=body)
+  checkErrors(response)
+  return response
+
 def getMailjet(credentials, urlSuffix):
   url = BASE_URL + urlSuffix
   response = requests.get(url, auth=(credentials["APIKey"], credentials["SecretKey"]))
@@ -40,6 +46,12 @@ def createCampaign(credentials, locale, senderID, senderEmail, senderName, subje
     "Title": title,
   }
   return postMailjet(credentials, "campaigndraft", body)
+
+def archiveCampaign(credentials, id):
+  body = {
+    "Status": -1
+  }
+  return putMailjet(credentials, "campaigndraft/{}".format(id), body)
 
 def addCampaignContent(credentials, id, html):
   body = {

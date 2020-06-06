@@ -125,6 +125,13 @@ def scheduleCampaign(credentials, id, date):
     print("Erreur mailjet:", exception.args[0])
     sys.exit()
 
+def archiveCampaign(credentials, id):
+  try:
+    mailjet.archiveCampaign(credentials, id)
+  except Exception as exception:
+    print("Erreur mailjet:", exception.args[0])
+    sys.exit()
+
 def validateEmails(emailAddresses):
   for email in emailAddresses:
     if not re.match(".+@.+\..+", email):
@@ -167,14 +174,15 @@ def main(topic, testEmailAddresses):
 
   answer = None
   while not answer in ["oui", "non"]:
-    print("Vérifiez si tout vous semble correct. Si oui, la campagne sera planifiée. Si non, elle sera supprimée et le script s'arrêtera.")
+    print("Vérifiez si tout vous semble correct. Si oui, la campagne sera planifiée. Si non, elle sera archivée et le script s'arrêtera.")
     answer = input("Est-ce que tout vous semble correct? (oui/non) ")
 
   if answer == "oui":
     scheduleCampaign(credentials, id, date)
-    print("Campagne programmée")
+    print("Campagne programmée.")
   else:
-    print("TODO : supprimer la campagne")
+    archiveCampaign(credentials, id)
+    print("Campagne archivée.")
   
 ######### SCRIPT #########
 
