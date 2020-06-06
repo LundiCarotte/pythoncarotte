@@ -166,7 +166,8 @@ def main(topic, testEmailAddresses):
 
   answer = None
   while not answer in ["oui", "non"]:
-    print("Vérifiez si tout vous semble correct. Si oui, la campagne sera planifiée. Si non, elle sera archivée et le script s'arrêtera.")
+    print("Ouvrez le mail de test, et vérifiez si tout vous semble correct.")
+    print("Si oui, la campagne sera planifiée. Si non, elle sera archivée et le script s'arrêtera.")
     answer = input("Est-ce que tout vous semble correct? (oui/non) ")
 
   if answer == "oui":
