@@ -83,6 +83,13 @@ def getTitleFromTxtContent(txtContent):
     exit()
   return titre
 
+def callMailjet(function, params):
+  try:
+    return function(*params)
+  except Exception as exception:
+    print("Erreur mailjet:", exception.args[0])
+    sys.exit()
+
 def createCampaign(credentials, date, topic, title):
   locale = "fr_FR"
   senderId = "1321967"
@@ -92,11 +99,8 @@ def createCampaign(credentials, date, topic, title):
   contactsListID = MAILJET_CONTACT_LIST_ID
   title = "Newsletter " + date + " - " + topic
 
-  try:
-    response = mailjet.createCampaign(credentials, locale, senderId, senderEmail, senderName, subject, contactsListID, title)
-  except Exception as exception:
-    print("Erreur mailjet:", exception.args[0])
-    sys.exit()
+  params = [credentials, locale, senderId, senderEmail, senderName, subject, contactsListID, title]
+  response = callMailjet(mailjet.createCampaign, params)
 
   id = response.json()["Data"][0]["ID"]
   return id
@@ -105,32 +109,20 @@ def addCampaignContent(credentials, id, htmlFile):
   with open(htmlFile, "r", encoding="utf-8") as f:
     html = f.read()
 
-  try:
-    mailjet.addCampaignContent(credentials, id, html)
-  except Exception as exception:
-    print("Erreur mailjet:", exception.args[0])
-    sys.exit()
+  params = [credentials, id, html]
+  response = callMailjet(mailjet.addCampaignContent, params)
 
 def testCampaign(credentials, id, email):
-  try:
-    mailjet.testCampaign(credentials, id, email)
-  except Exception as exception:
-    print("Erreur mailjet:", exception.args[0])
-    sys.exit()
+  params = [credentials, id, email]
+  response = callMailjet(mailjet.testCampaign, params)
 
 def scheduleCampaign(credentials, id, date):
-  try:
-    mailjet.scheduleCampaign(credentials, id, date + "T04:30:00")
-  except Exception as exception:
-    print("Erreur mailjet:", exception.args[0])
-    sys.exit()
+  params = [credentials, id, date + "T04:30:00"]
+  response = callMailjet(mailjet.scheduleCampaign, params)
 
 def archiveCampaign(credentials, id):
-  try:
-    mailjet.archiveCampaign(credentials, id)
-  except Exception as exception:
-    print("Erreur mailjet:", exception.args[0])
-    sys.exit()
+  params = [credentials, id]
+  response = callMailjet(mailjet.archiveCampaign, params)
 
 def validateEmails(emailAddresses):
   for email in emailAddresses:
