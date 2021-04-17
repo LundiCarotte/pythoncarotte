@@ -15,7 +15,7 @@ class Tag:
           >
 
             <div
-              style="font-family:Libre Baskerville, Helvetica, Arial, sans-serif;font-size:13px;line-height:24px;text-align:justify;color:#000000;"
+              style="font-family:Libre Baskerville, Helvetica, Arial, sans-serif;font-size:13px;line-height:24px;text-align:left;color:#000000;"
             >
               <p style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: #000000; line-height: 20px; margin: 0px 0;">
         """
