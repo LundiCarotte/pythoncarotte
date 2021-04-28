@@ -575,6 +575,7 @@ def ajouter_citation(txt,titre_web,categorie):
 			else:
 				bloc = tag.texte_sortie+tag.citation+tag.texte_entree
 				bloc = bloc.replace(rep.citation,data)
+				bloc = bloc.replace("CIT_URL",data.replace("<sub>", "").replace("</sub>", ""))
 				bloc = bloc.replace("URL",generer_url(titre_web,categorie))
 			txt = txt.replace(chaine,bloc)
 	return(txt)

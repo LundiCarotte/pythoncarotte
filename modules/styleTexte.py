@@ -144,10 +144,10 @@ class Tag:
             <br/>
             <center><b>«&nbsp;CITATION&nbsp;»<br/></b></center>
 
-            <a style="font-size:10px" href="http://www.facebook.com/sharer.php?u=URL&t=CITATION" style="text-decoration:none" target="blank">
+            <a style="font-size:10px" href="http://www.facebook.com/sharer.php?u=URL&t=CIT_URL" style="text-decoration:none" target="blank">
               <img alt="FB" style="border:0" height="25" width="15" src="https://lundicarotte.fr/img/facebook-couleur.png">
             </a> &nbsp;
-            <a style="font-size:10px" href="http://twitter.com/share?url=URL&text=CITATION" style="text-decoration:none" target="blank">
+            <a style="font-size:10px" href="http://twitter.com/share?url=URL&text=CIT_URL" style="text-decoration:none" target="blank">
               <img alt="TW" style="border:0" height="25" width="25" src="https://lundicarotte.fr/img/twitter-couleur.png">
             </a>
           </td>
