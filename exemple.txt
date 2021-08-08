@@ -5,7 +5,7 @@ URL-IMAGE{https://lundicarotte.fr/api/admin/media/img/peche.png}
 AUTEURS{Exemple auteurs}
 AUTEURS{George Brassens}
 PARTAGE_DESCRIPTION{Pêche ou aquaculture, d’où vient le poisson dans notre assiette ?}
-ACTU{}
+ACTU{Super actu cette semaine !}
 QUIZZ{oui}
 JEUDICAROTTE{Le gagnant, M,https://www.facebook.com/lundicarotte/photos/a.996650900476268/1328052434002778/?type=3&theater}
 RETROUVAILLES{}
