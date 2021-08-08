@@ -100,7 +100,7 @@ class Tag:
         >
         <tbody>
         <tr>
-        <td  style="width:10px;">
+        <td  style="width:30px;">
 
         <img
         alt="" height="auto" src="https://lundicarotte.fr/api/admin/media/img/carotte.png" style="border:none;display:block;outline:none;text-decoration:none;height:auto;width:100%;" title="" width="10"
