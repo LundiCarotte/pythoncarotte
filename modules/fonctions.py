@@ -21,7 +21,7 @@ def creerListeBlocs(typeArticle):
 		liste = [logo,titre,date,intro,image,dev,outro,auteurs,partage,don,actu,courrier,quizz,pied]
 
 	elif typeArticle == mail:
-		liste = [logo,titre,date,intro, image,dev, outro,auteurs,partage,don,actu,courrier,quizz,pied]
+		liste = [donheader,logo,titre,date,intro,image,dev,outro,auteurs,partage,don,actu,courrier,quizz,pied]
 
 	elif typeArticle == web:
 		liste = [titre,date,intro,image,dev,outro,auteurs,partage,quizz]
@@ -104,6 +104,9 @@ def creerContenu(article, bloc):
 	if bloc.a:
 		if article.repereExiste(bloc.repereTexte):
 			contenu = extrairecurly(article.txt,bloc.repereTexte)
+
+	elif nom == donheader:
+		contenu = bloc.code
 
 	elif nom == logo:
 		contenu = bloc.code

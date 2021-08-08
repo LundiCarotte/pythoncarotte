@@ -9,6 +9,7 @@ template_article = "templates/lundicarottetemplate.html"
 # définition des variables "bloc" : variables qui représentent
 # les blocs qu'on veut avoir dans le html final
 logo = "logo"
+donheader = "donheader"
 titre = "titre"
 date = "date"
 intro = "intro"

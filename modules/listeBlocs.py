@@ -7,6 +7,6 @@ listeblocs = [logo,titre,date,intro,image,dev,outro,auteurs,partage,don,actu,cou
 
 listeblocs_web = [titre,date,intro,image,dev,outro,auteurs,partage,quizz]
 
-listeblocs_mail = [logo,titre,date,intro, image,dev, outro,auteurs,partage,don,actu,courrier,quizz,pied]
+listeblocs_mail = [logo,donheader,titre,date,intro, image,dev, outro,auteurs,partage,don,actu,courrier,quizz,pied]
 
 listeblocs_artsup = [titre,intro,dev,outro,auteurs,partage]
