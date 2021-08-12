@@ -73,9 +73,8 @@ def creerBloc(i):
                               <tr>
                                 <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
                                   <div style="font-family:Helvetica, Arial, sans-serif;font-size:11px;line-height:20px;text-align:left;color:#000000;">
-                                    <a href="https://lundicarotte.fr/don" style="color: black; text-decoration: none;" target="_blank">
-                                      LundiCarotte est un projet gratuit, associatif et indépendant. Nous dépendons des dons de nos lecteurs et lectrices pour financer nos locaux et développer nos activités. Si vous aimez nous lire, vous pouvez nous soutenir. Merci !
-                                    </a>
+                                      LundiCarotte est un projet gratuit, associatif et indépendant. Nous dépendons des dons de nos lecteurs et lectrices pour financer nos locaux et développer nos activités.
+                                      Si vous aimez nous lire, vous pouvez <a href="https://lundicarotte.fr/don" style="color: black;" target="_blank">nous soutenir</a>. Merci !
                                   </div>
                                 </td>
                               </tr>
