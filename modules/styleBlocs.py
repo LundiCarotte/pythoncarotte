@@ -105,7 +105,7 @@ def creerBloc(i):
                                       <tr>
                                         <td style="width:65px;">
                                           <a href="https://lundicarotte.fr/don" target="_blank">
-                                            <img height="auto" src="http://localhost:8000/api/admin/media//img/commentaire.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="65">
+                                            <img height="auto" src="https://lundicarotte.fr/api/admin/media/img/commentaire.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="65">
                                           </a>
                                         </td>
                                       </tr>
